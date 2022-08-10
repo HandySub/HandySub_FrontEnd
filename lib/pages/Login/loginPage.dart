@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:handysub/components/colors.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values);
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: real_white,
+          elevation: 0,
           actions: <Widget>[
             IconButton(
+              color: real_black,
               icon: const Icon(Icons.navigate_next),
               tooltip: 'Next page',
               onPressed: () {
+                SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+                    overlays: []);
                 Navigator.pop(context);
               },
             ),
           ],
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
         ),
         body: Container(
           width: 360,

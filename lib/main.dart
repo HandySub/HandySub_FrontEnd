@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:handysub/components/colors.dart';
-import 'package:handysub/pages/loginPage.dart';
+import 'package:handysub/pages/Login/loginPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,6 +10,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'GmarketSans',
