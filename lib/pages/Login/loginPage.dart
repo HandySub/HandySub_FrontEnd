@@ -128,14 +128,15 @@ class LoginPage extends StatelessWidget {
                 Container(
                   width: 205,
                   height: 45,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: emerald,
-                  ),
-                  child: Center(
+                  child: ElevatedButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: emerald,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25)),
+                    ),
+                    onPressed: () {  },
                     child: Text(
                       "로그인",
-                      textDirection: TextDirection.ltr,
                       style: TextStyle(
                         color: real_white,
                         fontSize: 20,
