@@ -95,3 +95,6 @@ flutter:
           weight: 300
         - asset: assets/fonts/GmarketSansTTFBold.ttf
           weight: 700
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Medium.ttf
