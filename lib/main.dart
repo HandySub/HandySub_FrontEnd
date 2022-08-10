@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:handysub/components/colors.dart';
+import 'package:handysub/pages/loginPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,6 +41,10 @@ class MyApp extends StatelessWidget {
                       minimumSize: Size(width * 0.8, 45)),
                   onPressed: () {
                     // TODO: make Navigate to Login Page.
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
                   },
                   child: Text(
                     "시작하기",
