@@ -83,16 +83,20 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 SizedBox(
                   height: 24,
                   child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text("비밀번호",
+                    child: Text(
+                      "비밀번호",
                       style: TextStyle(
                         color: real_black,
                         fontSize: 15,
-                      ),),
+                      ),
+                    ),
                   ),
                 ),
                 Container(
@@ -134,7 +138,7 @@ class LoginPage extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25)),
                     ),
-                    onPressed: () {  },
+                    onPressed: () {},
                     child: Text(
                       "로그인",
                       style: TextStyle(
@@ -145,7 +149,9 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 15,),
+                SizedBox(
+                  height: 15,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -154,47 +160,57 @@ class LoginPage extends StatelessWidget {
                       height: 30,
                       child: TextButton(
                         onPressed: () {},
-                        child: Text("회원가입",
-                        style: TextStyle(color: real_black_65), ),
+                        child: Text(
+                          "회원가입",
+                          style: TextStyle(color: real_black_65),
+                        ),
                       ),
                     ),
                     Container(
                       width: 5,
                       height: 30,
-                      child: Center(child: Text("|",
-                        style: TextStyle(color: real_black_65),)),
+                      child: Center(
+                          child: Text(
+                        "|",
+                        style: TextStyle(color: real_black_65),
+                      )),
                     ),
                     Container(
                       width: 90,
                       height: 30,
                       child: TextButton(
                         onPressed: () {},
-                        child: Text("아이디 찾기",
-                          style: TextStyle(color: real_black_65),),
+                        child: Text(
+                          "아이디 찾기",
+                          style: TextStyle(color: real_black_65),
+                        ),
                       ),
                     ),
                     Container(
                       width: 5,
                       height: 30,
-                      child: Center(child: Text("|",
-                        style: TextStyle(color: real_black_65),)),
+                      child: Center(
+                          child: Text(
+                        "|",
+                        style: TextStyle(color: real_black_65),
+                      )),
                     ),
                     Container(
                       width: 110,
                       height: 30,
                       child: TextButton(
                         onPressed: () {},
-                        child: Text("비밀번호 찾기",
-                          style: TextStyle(color: real_black_65),),
+                        child: Text(
+                          "비밀번호 찾기",
+                          style: TextStyle(color: real_black_65),
+                        ),
                       ),
                     ),
                   ],
-
-
-
                 ),
-                SizedBox(height: 40,),
-
+                SizedBox(
+                  height: 40,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -202,60 +218,81 @@ class LoginPage extends StatelessWidget {
                       width: 125,
                       child: Align(
                         alignment: Alignment.topCenter,
-                        child: Divider(color: real_black_65, thickness: 1.0,),
+                        child: Divider(
+                          color: real_black_65,
+                          thickness: 1.0,
+                        ),
                       ),
                     ),
                     Container(
                       height: 30,
-                      child: Center(child: Text(" 또는 ",
-                      style: TextStyle(color: real_black_65),)),
+                      child: Center(
+                          child: Text(
+                        " 또는 ",
+                        style: TextStyle(color: real_black_65),
+                      )),
                     ),
                     Container(
                       width: 125,
                       child: Align(
                         alignment: Alignment.topCenter,
-                        child: Divider(color: real_black_65, thickness: 1.0,),
+                        child: Divider(
+                          color: real_black_65,
+                          thickness: 1.0,
+                        ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 40,),
-                Container(
-                  width: 314,
-                  height: 64,
-                  child: TextButton(onPressed: () {  },
-                  child: Image.asset('assets/kakao_login.png'),),
+                SizedBox(
+                  height: 40,
                 ),
                 Container(
                   width: 314,
                   height: 64,
-                  child: TextButton(onPressed: () {  },
-                    child: Container(
-                      width: 295,
-                      height: 45,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Color(0xff4285F4),
-                      ),
-
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: SizedBox(
-                              width: 45,
-                              height: 45,
-                              child: Image.asset('assets/google_login_2x.png', fit: BoxFit.fill,),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Image.asset('assets/kakao_login.png'),
+                  ),
+                ),
+                Container(
+                  width: 314,
+                  height: 64,
+                  child: TextButton(
+                      onPressed: () {},
+                      child: Container(
+                        width: 295,
+                        height: 45,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Color(0xff4285F4),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: SizedBox(
+                                width: 45,
+                                height: 45,
+                                child: Image.asset(
+                                  'assets/google_login_2x.png',
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
                             ),
-                          ),
-                          SizedBox(width: 50,),
-                          Text("Sign in with Google",
-                          style: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.54), fontSize: 14, fontFamily: "Roboto", )),
-                        ],
-                      ),
-                    )
-                ),
+                            SizedBox(
+                              width: 50,
+                            ),
+                            Text("Sign in with Google",
+                                style: TextStyle(
+                                  color: Color.fromRGBO(0, 0, 0, 0.54),
+                                  fontSize: 14,
+                                  fontFamily: "Roboto",
+                                )),
+                          ],
+                        ),
+                      )),
                 ),
               ],
             ),

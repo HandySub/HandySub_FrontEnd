@@ -4,6 +4,8 @@ import 'package:handysub/components/colors.dart';
 import 'package:handysub/pages/Login/loginPage.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: main_color));
   runApp(MyApp());
 }
 
