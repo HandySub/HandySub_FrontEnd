@@ -270,7 +270,6 @@ class LoginPage extends StatelessWidget {
                   height: height*0.08, //64
                   child: TextButton(
                     onPressed: () {
-                      //Todo :
                     },
                     child: Image.asset('assets/kakao_login.png'),
                   ),
