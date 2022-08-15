@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:handysub/constants/colors.dart';
 
-PreferredSizeWidget defaultAppBar(BuildContext context, String titleText) {
+PreferredSizeWidget defaultAppBar(
+    BuildContext context, String titleText, Color backGroundColor) {
   return AppBar(
-    backgroundColor: real_white,
+    backgroundColor: backGroundColor,
     elevation: 0,
     leading: IconButton(
       padding: EdgeInsets.zero,
