@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:handysub/components/colors.dart';
+import 'package:handysub/constants/colors.dart';
 import 'package:handysub/pages/Login/loginPage.dart';
 import 'package:handysub/pages/Matching/matching_pick_abled.dart';
 
@@ -48,8 +48,7 @@ class MyApp extends StatelessWidget {
                     // TODO: make Navigate to Login Page.
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => MatchingPickAbled()),
+                      MaterialPageRoute(builder: (context) => LoginPage()),
                     );
                   },
                   child: Text(
