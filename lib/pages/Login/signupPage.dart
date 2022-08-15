@@ -104,8 +104,8 @@ class _SignupPageState extends State<SignupPage> {
       ),
       home: Scaffold(
         backgroundColor: real_white,
-        appBar: defaultAppBar(context, "회원가입"),
-          // systemOverlayStyle: SystemUiOverlayStyle.dark,
+        appBar: defaultAppBar(context, "회원가입", real_white),
+        // systemOverlayStyle: SystemUiOverlayStyle.dark,
 
         body: Form(
           key: formKey,
