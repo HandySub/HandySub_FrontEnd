@@ -60,7 +60,7 @@ class _MatchingPickAbledState extends State<MatchingPickAbled> {
       home: Scaffold(
         backgroundColor: real_white,
         // * AppBar
-        appBar: defaultAppBar(context, "매칭 선택"),
+        appBar: defaultAppBar(context, "매칭 선택", real_white),
         // * Body of MaterialApp
         body: Column(
           children: [
@@ -237,6 +237,8 @@ class _MatchingPickAbledState extends State<MatchingPickAbled> {
           child: Image.asset(
             'assets/metro_line/Seoul_Metro_Line_1.png',
             fit: BoxFit.cover,
+            color: const Color.fromRGBO(255, 255, 255, 0.8),
+            colorBlendMode: BlendMode.modulate,
           ),
         ),
         SizedBox(
@@ -244,11 +246,9 @@ class _MatchingPickAbledState extends State<MatchingPickAbled> {
         ),
         SizedBox(
           width: 70,
-          child: Flexible(
-            child: Text(
-              station,
-              textAlign: TextAlign.center,
-            ),
+          child: Text(
+            station,
+            textAlign: TextAlign.center,
           ),
         ),
       ],
