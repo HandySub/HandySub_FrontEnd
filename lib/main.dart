@@ -4,6 +4,7 @@ import 'package:handysub/constants/colors.dart';
 import 'package:handysub/pages/Login/loginPage.dart';
 import 'package:handysub/pages/Matching/matching_apply_disabled.dart';
 import 'package:handysub/pages/Matching/matching_pick_abled.dart';
+import 'package:handysub/pages/Matching/matching_waiting_disabled.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => MatchingApplyPage_Disabled()),
+                          builder: (context) => MatchingWaitingDisabled()),
                     );
                   },
                   child: Text(
