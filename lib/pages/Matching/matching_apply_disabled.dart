@@ -49,180 +49,190 @@ class _MatchingApplyPage_DisabledState
       theme: ThemeData(
         fontFamily: 'GmarketSans',
       ),
-      home: Scaffold(
-        // TODO : change Color to lightgray
-        backgroundColor: real_white,
-        appBar: AppBar(
-          backgroundColor: lightgray,
-          elevation: 0.1,
-        ),
-        body: Center(
-          child: SizedBox(
-            width: width,
-            height: height,
-            child: Container(
-              margin: EdgeInsets.fromLTRB(
-                  width * 0.07, height * 0.05, width * 0.07, height * 0.35),
-              // padding: EdgeInsets.fromLTRB(width * 0.1, 9, width * 0.1, 9),
-              decoration: BoxDecoration(
-                // Todo : remove border line when background color(lightgray) is applied.
-                border: Border.all(),
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: real_white,
-              ),
-              child: Stack(
-                children: [
-                  // * select line / station
-                  Column(
-                    children: [
-                      SizedBox(
-                        height: height * 0.05,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          // * DropDownButton 1
-                          linePickDropDownButton(
-                            DropdownButton(
-                              underline: SizedBox(),
-                              isExpanded: true,
-                              value: linePick_dropDownValue1,
-                              icon: const Icon(Icons.keyboard_arrow_down),
-                              items: line_dropDownList.map((String items) {
-                                return DropdownMenuItem(
-                                  value: items,
-                                  child: Center(
-                                    child: Text(
-                                      items,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }).toList(),
-                              onChanged: (dynamic newValue) {
-                                setState(() {
-                                  linePick_dropDownValue1 = newValue ?? "";
-                                });
-                              },
+      home: Container(
+        color: main_color,
+        child: SafeArea(
+          child: Scaffold(
+            appBar:
+                defaultAppBar(context, "매칭 리스트", real_black.withOpacity(0.09)),
+            body: Container(
+              color: real_black.withOpacity(0.09),
+              child: Center(
+                child: SizedBox(
+                  width: width,
+                  height: height,
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(width * 0.07, height * 0.05,
+                        width * 0.07, height * 0.33),
+                    // padding: EdgeInsets.fromLTRB(width * 0.1, 9, width * 0.1, 9),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      color: real_white,
+                    ),
+                    child: Stack(
+                      children: [
+                        // * select line / station
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: height * 0.05,
                             ),
-                          ),
-                          linePickDropDownButton(
-                            DropdownButton(
-                              underline: SizedBox(),
-                              isExpanded: true,
-                              value: linePick_dropDownValue2,
-                              icon: const Icon(Icons.keyboard_arrow_down),
-                              items: line_dropDownList.map((String items) {
-                                return DropdownMenuItem(
-                                  value: items,
-                                  child: Center(
-                                    child: Text(
-                                      items,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                      ),
-                                    ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                // * DropDownButton 1
+                                linePickDropDownButton(
+                                  DropdownButton(
+                                    underline: SizedBox(),
+                                    isExpanded: true,
+                                    value: linePick_dropDownValue1,
+                                    icon: const Icon(Icons.keyboard_arrow_down),
+                                    items:
+                                        line_dropDownList.map((String items) {
+                                      return DropdownMenuItem(
+                                        value: items,
+                                        child: Center(
+                                          child: Text(
+                                            items,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                    onChanged: (dynamic newValue) {
+                                      setState(() {
+                                        linePick_dropDownValue1 =
+                                            newValue ?? "";
+                                      });
+                                    },
                                   ),
-                                );
-                              }).toList(),
-                              onChanged: (dynamic newValue) {
-                                setState(() {
-                                  linePick_dropDownValue2 = newValue ?? "";
-                                });
-                              },
-                            ),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          linePickDropDownButton(
-                            DropdownButton(
-                              underline: SizedBox(),
-                              isExpanded: true,
-                              value: stationPick_dropDownValue1,
-                              icon: const Icon(Icons.keyboard_arrow_down),
-                              items: station_dropDownList.map((String items) {
-                                return DropdownMenuItem(
-                                  value: items,
-                                  child: Center(
-                                    child: Text(
-                                      items,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                      ),
-                                    ),
+                                ),
+                                linePickDropDownButton(
+                                  DropdownButton(
+                                    underline: SizedBox(),
+                                    isExpanded: true,
+                                    value: linePick_dropDownValue2,
+                                    icon: const Icon(Icons.keyboard_arrow_down),
+                                    items:
+                                        line_dropDownList.map((String items) {
+                                      return DropdownMenuItem(
+                                        value: items,
+                                        child: Center(
+                                          child: Text(
+                                            items,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                    onChanged: (dynamic newValue) {
+                                      setState(() {
+                                        linePick_dropDownValue2 =
+                                            newValue ?? "";
+                                      });
+                                    },
                                   ),
-                                );
-                              }).toList(),
-                              onChanged: (dynamic newValue) {
-                                setState(() {
-                                  stationPick_dropDownValue1 = newValue ?? "";
-                                });
-                              },
+                                )
+                              ],
                             ),
-                          ),
-                          Icon(
-                            Icons.east,
-                            color: real_black_65,
-                            size: 20,
-                          ),
-                          linePickDropDownButton(
-                            DropdownButton(
-                              underline: SizedBox(),
-                              isExpanded: true,
-                              value: stationPick_dropDownValue2,
-                              icon: const Icon(Icons.keyboard_arrow_down),
-                              items: station_dropDownList.map((String items) {
-                                return DropdownMenuItem(
-                                  value: items,
-                                  child: Center(
-                                    child: Text(
-                                      items,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                      ),
-                                    ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                linePickDropDownButton(
+                                  DropdownButton(
+                                    underline: SizedBox(),
+                                    isExpanded: true,
+                                    value: stationPick_dropDownValue1,
+                                    icon: const Icon(Icons.keyboard_arrow_down),
+                                    items: station_dropDownList
+                                        .map((String items) {
+                                      return DropdownMenuItem(
+                                        value: items,
+                                        child: Center(
+                                          child: Text(
+                                            items,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                    onChanged: (dynamic newValue) {
+                                      setState(() {
+                                        stationPick_dropDownValue1 =
+                                            newValue ?? "";
+                                      });
+                                    },
                                   ),
-                                );
-                              }).toList(),
-                              onChanged: (dynamic newValue) {
-                                setState(() {
-                                  stationPick_dropDownValue2 = newValue ?? "";
-                                });
-                              },
+                                ),
+                                Icon(
+                                  Icons.east,
+                                  color: real_black_65,
+                                  size: 20,
+                                ),
+                                linePickDropDownButton(
+                                  DropdownButton(
+                                    underline: SizedBox(),
+                                    isExpanded: true,
+                                    value: stationPick_dropDownValue2,
+                                    icon: const Icon(Icons.keyboard_arrow_down),
+                                    items: station_dropDownList
+                                        .map((String items) {
+                                      return DropdownMenuItem(
+                                        value: items,
+                                        child: Center(
+                                          child: Text(
+                                            items,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                    onChanged: (dynamic newValue) {
+                                      setState(() {
+                                        stationPick_dropDownValue2 =
+                                            newValue ?? "";
+                                      });
+                                    },
+                                  ),
+                                )
+                              ],
                             ),
-                          )
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                        // * matching start button
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: height * 0.37,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                buttonToMatch("매칭 취소"),
+                                buttonToMatch("매칭 신청"),
+                              ],
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
-                  // * matching start button
-                  Column(
-                    children: [
-                      SizedBox(
-                        height: height * 0.37,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          buttonToMatch("매칭 취소"),
-                          buttonToMatch("매칭 신청"),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
+                ),
               ),
             ),
           ),

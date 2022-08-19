@@ -57,129 +57,134 @@ class _MatchingPickAbledState extends State<MatchingPickAbled> {
       theme: ThemeData(
         fontFamily: 'GmarketSans',
       ),
-      home: Scaffold(
-        backgroundColor: real_white,
-        // * AppBar
-        appBar: defaultAppBar(context, "매칭 선택", real_white),
-        // * Body of MaterialApp
-        body: Column(
-          children: [
-            // Just for Alignment
-            SizedBox(
-              height: height * 0.025,
-              width: width,
-            ),
-            // * Select DropDownButton Row
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      home: Container(
+        color: main_color,
+        child: SafeArea(
+          child: Scaffold(
+            backgroundColor: real_white,
+            // * AppBar
+            appBar: defaultAppBar(context, "매칭 선택", real_white),
+            // * Body of MaterialApp
+            body: Column(
               children: [
-                // * Select Container 1
-                Container(
-                  height: 30,
-                  width: 125,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 2,
-                      color: emerald,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(12.0),
-                    ),
-                  ),
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(5.0, 0, 5.0, 0),
-                    child: DropdownButton(
-                      underline: SizedBox(),
-                      hint: Center(
-                        child: Text(
-                          "출발 호선",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 13,
-                          ),
+                // Just for Alignment
+                SizedBox(
+                  height: height * 0.025,
+                  width: width,
+                ),
+                // * Select DropDownButton Row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    // * Select Container 1
+                    Container(
+                      height: 30,
+                      width: 125,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 2,
+                          color: emerald,
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12.0),
                         ),
                       ),
-                      isExpanded: true,
-                      value: dropDownValue1,
-                      icon: const Icon(Icons.keyboard_arrow_down),
-                      items: dropDownList.map((String items) {
-                        return DropdownMenuItem(
-                          value: items,
-                          child: Center(
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(5.0, 0, 5.0, 0),
+                        child: DropdownButton(
+                          underline: SizedBox(),
+                          hint: Center(
                             child: Text(
-                              items,
+                              "출발 호선",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 13,
                               ),
                             ),
                           ),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropDownValue1 = newValue ?? "";
-                        });
-                      },
-                    ),
-                  ),
-                ),
-                // * Select Container 2
-                Container(
-                  height: 30,
-                  width: 125,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 2,
-                      color: emerald,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(12.0),
-                    ),
-                  ),
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(5.0, 0, 5.0, 0),
-                    child: DropdownButton(
-                      underline: SizedBox(),
-                      hint: Center(
-                        child: Text(
-                          "도착 호선",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 13,
-                          ),
+                          isExpanded: true,
+                          value: dropDownValue1,
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          items: dropDownList.map((String items) {
+                            return DropdownMenuItem(
+                              value: items,
+                              child: Center(
+                                child: Text(
+                                  items,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropDownValue1 = newValue ?? "";
+                            });
+                          },
                         ),
                       ),
-                      isExpanded: true,
-                      value: dropDownValue2,
-                      icon: const Icon(Icons.keyboard_arrow_down),
-                      items: dropDownList.map((String items) {
-                        return DropdownMenuItem(
-                          value: items,
-                          child: Center(
+                    ),
+                    // * Select Container 2
+                    Container(
+                      height: 30,
+                      width: 125,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 2,
+                          color: emerald,
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12.0),
+                        ),
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(5.0, 0, 5.0, 0),
+                        child: DropdownButton(
+                          underline: SizedBox(),
+                          hint: Center(
                             child: Text(
-                              items,
+                              "도착 호선",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 13,
                               ),
                             ),
                           ),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropDownValue2 = newValue ?? "";
-                        });
-                      },
+                          isExpanded: true,
+                          value: dropDownValue2,
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          items: dropDownList.map((String items) {
+                            return DropdownMenuItem(
+                              value: items,
+                              child: Center(
+                                child: Text(
+                                  items,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropDownValue2 = newValue ?? "";
+                            });
+                          },
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
+                // * ListView
+                Expanded(child: applyListBuilder())
               ],
             ),
-            // * ListView
-            Expanded(child: applyListBuilder())
-          ],
+          ),
         ),
       ),
     );
