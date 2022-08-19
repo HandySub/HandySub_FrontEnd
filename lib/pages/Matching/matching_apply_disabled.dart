@@ -97,7 +97,7 @@ class _MatchingApplyPage_DisabledState
                                             items,
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 15,
+                                              fontSize: 16,
                                             ),
                                           ),
                                         ),
@@ -126,7 +126,7 @@ class _MatchingApplyPage_DisabledState
                                             items,
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 15,
+                                              fontSize: 16,
                                             ),
                                           ),
                                         ),
@@ -163,7 +163,7 @@ class _MatchingApplyPage_DisabledState
                                             items,
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 15,
+                                              fontSize: 16,
                                             ),
                                           ),
                                         ),
@@ -197,7 +197,7 @@ class _MatchingApplyPage_DisabledState
                                             items,
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 15,
+                                              fontSize: 16,
                                             ),
                                           ),
                                         ),
