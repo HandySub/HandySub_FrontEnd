@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:handysub/components/buttons.dart';
 import 'package:handysub/constants/colors.dart';
 import 'package:handysub/components/appBar.dart';
 
@@ -81,7 +82,7 @@ class _MatchingApplyPage_DisabledState
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 // * DropDownButton 1
-                                linePickDropDownButton(
+                                greenDropDownButton(
                                   DropdownButton(
                                     underline: SizedBox(),
                                     isExpanded: true,
@@ -110,7 +111,7 @@ class _MatchingApplyPage_DisabledState
                                     },
                                   ),
                                 ),
-                                linePickDropDownButton(
+                                greenDropDownButton(
                                   DropdownButton(
                                     underline: SizedBox(),
                                     isExpanded: true,
@@ -147,7 +148,7 @@ class _MatchingApplyPage_DisabledState
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                linePickDropDownButton(
+                                greenDropDownButton(
                                   DropdownButton(
                                     underline: SizedBox(),
                                     isExpanded: true,
@@ -181,7 +182,7 @@ class _MatchingApplyPage_DisabledState
                                   color: real_black_65,
                                   size: 20,
                                 ),
-                                linePickDropDownButton(
+                                greenDropDownButton(
                                   DropdownButton(
                                     underline: SizedBox(),
                                     isExpanded: true,
@@ -223,8 +224,8 @@ class _MatchingApplyPage_DisabledState
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                buttonToMatch("매칭 취소"),
-                                buttonToMatch("매칭 신청"),
+                                greenTextButton("매칭 취소"),
+                                greenTextButton("매칭 신청"),
                               ],
                             ),
                           ],
@@ -235,52 +236,6 @@ class _MatchingApplyPage_DisabledState
                 ),
               ),
             ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget linePickDropDownButton(DropdownButton dropdownbutton) {
-    return Container(
-      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-      height: 45,
-      width: 120,
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 2,
-          color: emerald,
-        ),
-        borderRadius: BorderRadius.all(
-          Radius.circular(12.0),
-        ),
-      ),
-      child: Container(
-          padding: EdgeInsets.fromLTRB(5.0, 0, 5.0, 0), child: dropdownbutton),
-    );
-  }
-
-  Widget buttonToMatch(String text) {
-    return Container(
-      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-      height: 50,
-      width: 130,
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 2,
-          color: emerald,
-        ),
-        borderRadius: BorderRadius.all(
-          Radius.circular(12.0),
-        ),
-      ),
-      child: Center(
-        child: Text(
-          text,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-            color: emerald,
           ),
         ),
       ),
