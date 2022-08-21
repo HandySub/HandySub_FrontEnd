@@ -8,3 +8,6 @@ const real_black_65 = Color.fromRGBO(0, 0, 0, 0.65);
 const real_black_19 = Color.fromRGBO(0, 0, 0, 0.19);
 const lightgray = Color.fromRGBO(0, 0, 0, 0.09);
 const main_color_light = Color(0xffe7f4e8);
+const gray=Color.fromARGB(255, 186, 191, 183);
+const green=Color.fromARGB(255, 140, 214, 0);
+const orange=Color.fromARGB(255, 255, 179, 124);

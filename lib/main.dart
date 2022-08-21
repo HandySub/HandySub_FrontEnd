@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:handysub/constants/colors.dart';
 import 'package:handysub/pages/Login/loginPage.dart';
 import 'package:handysub/pages/Matching/matching_apply_disabled.dart';
+import 'package:handysub/pages/Matching/matching_list_disabled.dart';
 import 'package:handysub/pages/Matching/matching_pick_abled.dart';
 import 'package:handysub/pages/Matching/matching_waiting_disabled.dart';
 
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => MatchingWaitingDisabled()),
+                          builder: (context) => MatchingListDisabled())
                     );
                   },
                   child: Text(
