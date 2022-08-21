@@ -28,12 +28,16 @@ PreferredSizeWidget defaultAppBar(
         },
       ),
     ],
-    title: Text(
-      titleText,
-      style: TextStyle(
-        color: real_black,
-        fontWeight: FontWeight.w500,
-        fontSize: 22,
+    centerTitle: false,
+    title: Padding(
+      padding: const EdgeInsets.fromLTRB(0, 2, 0, 0),
+      child: Text(
+        titleText,
+        style: TextStyle(
+          color: real_black,
+          fontWeight: FontWeight.w500,
+          fontSize: 22,
+        ),
       ),
     ),
     systemOverlayStyle: SystemUiOverlayStyle.dark,
