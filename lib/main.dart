@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:handysub/components/frame.dart';
 import 'package:handysub/constants/colors.dart';
 import 'package:handysub/pages/Login/loginPage.dart';
 import 'package:handysub/pages/Matching/matching_apply_disabled.dart';
@@ -52,7 +53,8 @@ class MyApp extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => MatchingListDisabled())
+                        builder: (context) => MatchingWaitingDisabled(),
+                      ),
                     );
                   },
                   child: Text(
