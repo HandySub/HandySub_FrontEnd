@@ -224,8 +224,8 @@ class _MatchingApplyPage_DisabledState
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                greenTextButton("매칭 취소"),
-                                greenTextButton("매칭 신청"),
+                                greenTextButton("매칭 취소", () {}),
+                                greenTextButton("매칭 신청", () {}),
                               ],
                             ),
                           ],

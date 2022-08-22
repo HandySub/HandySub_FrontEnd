@@ -28,25 +28,30 @@ Widget greenTextButton_4(String text) {
   );
 }
 
-Widget greenTextButton(String text) {
-  return Container(
-    decoration: BoxDecoration(
-      border: Border.all(
-        width: 2,
-        color: emerald,
-      ),
-      borderRadius: BorderRadius.all(
-        Radius.circular(12.0),
-      ),
-    ),
-    child: Padding(
-      padding: EdgeInsets.fromLTRB(17, 11.5, 17, 11.5),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
+Widget greenTextButton(String text, VoidCallback buttonFunc) {
+  return TextButton(
+    onPressed: () {
+      buttonFunc();
+    },
+    child: Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 2,
           color: emerald,
+        ),
+        borderRadius: BorderRadius.all(
+          Radius.circular(12.0),
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(17, 11.5, 17, 11.5),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+            color: emerald,
+          ),
         ),
       ),
     ),
