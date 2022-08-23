@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:handysub/components/appBar.dart';
 
 import '../../constants/colors.dart';
+import '../../constants/textstyle.dart';
 
 enum MatchingStateList { gray, green, orange }
 
@@ -119,11 +120,7 @@ class _MatchingListDisabledState extends State<MatchingListDisabled> {
                     children:[
                       Text(
                         station1,
-                        // textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: 15,
-                          // fontWeight: FontWeight.bold,
-                        ),
+                        style: defaultTextStyle(15.0),
                       ),
                       Icon(
                         Icons.east,
@@ -132,11 +129,7 @@ class _MatchingListDisabledState extends State<MatchingListDisabled> {
                       ),
                       Text(
                         station2,
-                        // textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: 15,
-                          // fontWeight: FontWeight.bold,
-                        ),
+                        style:  defaultTextStyle(15.0),
                       ),
                     ],
                   ),
@@ -144,7 +137,6 @@ class _MatchingListDisabledState extends State<MatchingListDisabled> {
                     date,
                     style: TextStyle(
                       color: real_black_65,
-                      fontSize: 13,
                     ),
                   )
                 ],

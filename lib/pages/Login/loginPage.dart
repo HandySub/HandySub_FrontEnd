@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:handysub/constants/colors.dart';
 import 'package:handysub/pages/Login/signupPage.dart';
 
+import '../../components/appBar.dart';
+
 //Todo : change TextField to TextFieldForm
 //Todo : Make sign in with kakao func
 //Todo : Make sign in with google func
@@ -20,21 +22,7 @@ class LoginPage extends StatelessWidget {
         fontFamily: 'GmarketSans',
       ),
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: real_white,
-          elevation: 0,
-          leading: IconButton(
-            color: real_black,
-            icon: const Icon(Icons.navigate_before, size: 35,),
-            tooltip: 'Previous page',
-            onPressed: () {
-              SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-                  overlays: []);
-              Navigator.pop(context);
-            },
-          ),
-          systemOverlayStyle: SystemUiOverlayStyle.dark,
-        ),
+        appBar: defaultAppBar(context, "로그인", real_white),
         body: SingleChildScrollView(
           child: Container(
             color: real_white,
@@ -46,108 +34,19 @@ class LoginPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    SizedBox(height: height*0.01, width: width*0.05,),
-                    SizedBox(
-                      height: height*0.03,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "이메일",
-                          style: TextStyle(
-                            color: real_black,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  width: width*0.85, //314
-                  height: height*0.066, //50
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                    top: 0,
-                    bottom: 0,
-                  ),
-                  child: TextField(
-                    textAlignVertical: TextAlignVertical.center,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "jw101902@naver.com",
-                      hintStyle: TextStyle(
-                        color: real_black_19,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      width: 1,
-                      color: real_black,
-                    ),
-                  ),
-                ),
+                LoginInfoText(height, width, "이메일"),
+                InputBox(width, height, "jw101902@naver.com"),
                 SizedBox(
-                  height: height*0.01, //10
+                  height: height * 0.01, //10
                 ),
-                Row(
-                  children: [
-                    SizedBox(height: height*0.01, width: width*0.05,),
-                    SizedBox(
-                      height: height*0.03,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "비밀번호",
-                          style: TextStyle(
-                            color: real_black,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  width: width*0.85, //314
-                  height: height*0.066, //50
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
-                    top: 0,
-                    bottom: 0,
-                  ),
-                  child: TextField(
-                    obscureText: true,
-                    textAlignVertical: TextAlignVertical.center,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "passwordExample123@!",
-                      hintStyle: TextStyle(
-                        color: real_black_19,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      width: 1,
-                      color: real_black,
-                    ),
-                  ),
-                ),
+                LoginInfoText(height, width, "비밀번호"),
+                InputBox(width, height, "passwordExample123@!"),
                 SizedBox(
-                  height: height*0.025, //24
+                  height: height * 0.025, //24
                 ),
                 Container(
-                  width: width*0.48, //205
-                  height:  height*0.055, //45
+                  width: width * 0.48, //205
+                  height: height * 0.055, //45
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
                       backgroundColor: emerald,
@@ -166,17 +65,18 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: height*0.025, //15
+                  height: height * 0.025, //15
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: width*0.23,
-                      height: height*0.05,
+                      width: width * 0.23,
+                      height: height * 0.05,
                       child: TextButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => SignupPage()),);
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => SignupPage()),);
                         },
                         child: Text(
                           "회원가입",
@@ -185,8 +85,8 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: width*0.01,
-                      height: height*0.05,
+                      width: width * 0.01,
+                      height: height * 0.05,
                       child: Center(
                           child: Text(
                             "|",
@@ -194,8 +94,8 @@ class LoginPage extends StatelessWidget {
                           )),
                     ),
                     Container(
-                      width: width*0.26,
-                      height: height*0.05,
+                      width: width * 0.26,
+                      height: height * 0.05,
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
@@ -205,8 +105,8 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: width*0.01,
-                      height: height*0.05,
+                      width: width * 0.01,
+                      height: height * 0.05,
                       child: Center(
                           child: Text(
                             "|",
@@ -214,8 +114,8 @@ class LoginPage extends StatelessWidget {
                           )),
                     ),
                     Container(
-                      width: width*0.29,
-                      height: height*0.05,
+                      width: width * 0.29,
+                      height: height * 0.05,
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
@@ -227,13 +127,13 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: height*0.05,
+                  height: height * 0.05,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: width*0.3,
+                      width: width * 0.3,
                       child: Align(
                         alignment: Alignment.topCenter,
                         child: Divider(
@@ -243,7 +143,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: height*0.03,
+                      height: height * 0.03,
                       child: Center(
                           child: Text(
                             "  또는  ",
@@ -251,7 +151,7 @@ class LoginPage extends StatelessWidget {
                           )),
                     ),
                     Container(
-                      width: width*0.3,
+                      width: width * 0.3,
                       child: Align(
                         alignment: Alignment.topCenter,
                         child: Divider(
@@ -263,25 +163,24 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: height*0.05,
+                  height: height * 0.05,
                 ),
                 Container(
-                  width: width*0.8, //314
-                  height: height*0.08, //64
+                  width: width * 0.8, //314
+                  height: height * 0.08, //64
                   child: TextButton(
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                     child: Image.asset('assets/kakao_login.png'),
                   ),
                 ),
                 Container(
-                  width: width*0.8, //314
-                  height: height*0.08, //64
+                  width: width * 0.8, //314
+                  height: height * 0.08, //64
                   child: TextButton(
                       onPressed: () {},
                       child: Container(
-                        width: width*0.73,
-                        height: height*0.051,
+                        width: width * 0.73,
+                        height: height * 0.051,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           color: Color(0xff4285F4),
@@ -292,7 +191,7 @@ class LoginPage extends StatelessWidget {
                             Align(
                               alignment: Alignment.centerLeft,
                               child: SizedBox(
-                                width: width*0.11,
+                                width: width * 0.11,
                                 child: Image.asset(
                                   'assets/google_login_2x.png',
                                   fit: BoxFit.fill,
@@ -300,7 +199,7 @@ class LoginPage extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              width: width*0.12,
+                              width: width * 0.12,
                             ),
                             Text("Sign in with Google",
                                 style: TextStyle(
@@ -319,4 +218,60 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-}
+
+  Widget InputBox(double width, double height, String hintText) {
+    return Container(
+                width: width * 0.85,
+                height: height * 0.066,
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  top: 0,
+                  bottom: 0,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    width: 1,
+                    color: real_black,
+                  ),
+                ),
+                child: TextField(
+                  textAlignVertical: TextAlignVertical.center,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: hintText,
+                    hintStyle: TextStyle(
+                      color: real_black_19,
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+              );
+  }
+
+  Widget LoginInfoText(double height, double width, String logininfo) {
+    return Row(
+      children: [
+        SizedBox(height: height * 0.01, width: width * 0.05,),
+        SizedBox(
+          height: height * 0.03,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              logininfo,
+              style: TextStyle(
+                color: real_black,
+                fontSize: 15,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+  }
+
+
+
+
