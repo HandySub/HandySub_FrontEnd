@@ -4,73 +4,6 @@ import 'package:handysub/constants/colors.dart';
 
 import '../../components/appBar.dart';
 
-class togglebutton extends StatefulWidget {
-  final String text1;
-  final String text2;
-
-  const togglebutton({Key? key, required this.text1, required this.text2})
-      : super(key: key);
-
-  @override
-  State<togglebutton> createState() => _togglebuttonState();
-}
-
-class _togglebuttonState extends State<togglebutton> {
-  String result = '';
-  bool istext1 = false;
-  bool istext2 = false;
-
-  late List<bool> isSelected;
-
-  void initState() {
-    isSelected = [istext1, istext2];
-    super.initState();
-  }
-
-  void toggleSelect(value) {
-    if (value == 0) {
-      istext1 = true;
-      istext2 = false;
-    } else {
-      istext1 = false;
-      istext2 = true;
-    }
-    setState(() {
-      isSelected = [istext1, istext2];
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      // final width = constraints.maxWidth;
-      // final height = constraints.maxHeight;
-      return Row(
-        children: [
-          ToggleButtons(
-            children: <Widget>[
-              Text(widget.text1),
-              Text(widget.text2),
-            ],
-            isSelected: isSelected,
-            onPressed: toggleSelect,
-            // renderBorder: false,
-            color: main_color,
-            fillColor: main_color,
-            borderRadius: BorderRadius.all(Radius.circular(20.0)),
-            borderColor: main_color,
-            selectedColor: real_white,
-            constraints: BoxConstraints.expand(
-                width: constraints.maxWidth / 2 - 3,
-                height: constraints.maxHeight / 2 + 10),
-          )
-        ],
-      );
-    });
-  }
-}
-
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
 
@@ -105,75 +38,41 @@ class _SignupPageState extends State<SignupPage> {
       home: Scaffold(
         backgroundColor: real_white,
         appBar: defaultAppBar(context, "회원가입", real_white),
-        // systemOverlayStyle: SystemUiOverlayStyle.dark,
-
         body: Form(
           key: formKey,
           child: SingleChildScrollView(
             child: Container(
               color: real_white,
-              padding: const EdgeInsets.only(
-                left: 22,
-                right: 22,
-                top: 15,
-                bottom: 15,
-              ),
+              padding: const  EdgeInsets.fromLTRB(22.0, 15.0, 22.0, 15.0),
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      SizedBox(
-                        height: height * 0.01,
-                        width: width * 0.05,
-                      ),
-                      SizedBox(
-                        height: height * 0.03,
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "이메일",
-                            style: TextStyle(
-                              color: real_black,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  SignupInfoText(height, width, "이메일"),
                   Stack(
                     children: [
                       Container(
                         width: width * 0.85,
-                        //314
                         height: height * 0.066,
-                        //50
-                        padding: const EdgeInsets.only(
-                          left: 15,
-                          right: 15,
-                          top: 0,
-                          bottom: 0,
-                        ),
+                        padding: const  EdgeInsets.fromLTRB(15.0, 0, 15.0, 0),
                         child: TextFormField(
-                          textAlignVertical: TextAlignVertical.center,
-                          validator: (value) {
-                            if (value!.isEmpty || !value.contains('@')) {
-                              return "유효한 이메일을 입력해주세요.";
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {
-                            userEmail = value!;
-                          },
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "jw101902@naver.com",
-                            hintStyle: TextStyle(
-                              color: real_black_19,
-                              fontSize: 15,
+                              textAlignVertical: TextAlignVertical.center,
+                              validator: (value) {
+                                if (value!.isEmpty || !value.contains("@")) {
+                                  return "유효한 이메일을 입력해주세요.";
+                                }
+                                return null;
+                              },
+                              onSaved: (value) {
+                                userEmail = value!;
+                              },
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "jw101902@naver.com",
+                                hintStyle: TextStyle(
+                                  color: real_black_19,
+                                  fontSize: 15,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
@@ -212,38 +111,13 @@ class _SignupPageState extends State<SignupPage> {
                   SizedBox(
                     height: height * 0.01, //10
                   ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        height: height * 0.01,
-                        width: width * 0.05,
-                      ),
-                      SizedBox(
-                        height: height * 0.03,
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "비밀번호",
-                            style: TextStyle(
-                              color: real_black,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  SignupInfoText(height, width, "비밀번호"),
                   Container(
                     width: width * 0.85,
                     //314
                     height: height * 0.066,
                     //50
-                    padding: const EdgeInsets.only(
-                      left: 15,
-                      right: 15,
-                      top: 0,
-                      bottom: 0,
-                    ),
+                    padding: const  EdgeInsets.fromLTRB(15.0, 0, 15.0, 0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
@@ -279,38 +153,13 @@ class _SignupPageState extends State<SignupPage> {
                   SizedBox(
                     height: height * 0.01, //10
                   ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        height: height * 0.01,
-                        width: width * 0.05,
-                      ),
-                      SizedBox(
-                        height: height * 0.03,
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "비밀번호 확인",
-                            style: TextStyle(
-                              color: real_black,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  SignupInfoText(height, width, "비밀번호 확인"),
                   Container(
                     width: width * 0.85,
                     //314
                     height: height * 0.066,
                     //50
-                    padding: const EdgeInsets.only(
-                      left: 15,
-                      right: 15,
-                      top: 0,
-                      bottom: 0,
-                    ),
+                    padding: const  EdgeInsets.fromLTRB(15.0, 0, 15.0, 0),
                     child: TextFormField(
                       obscureText: true,
                       textAlignVertical: TextAlignVertical.center,
@@ -346,27 +195,7 @@ class _SignupPageState extends State<SignupPage> {
                   SizedBox(
                     height: height * 0.01, //10
                   ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        height: height * 0.01,
-                        width: width * 0.05,
-                      ),
-                      SizedBox(
-                        height: height * 0.03,
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "닉네임",
-                            style: TextStyle(
-                              color: real_black,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  SignupInfoText(height, width, "닉네임"),
                   Stack(
                     children: [
                       Container(
@@ -374,12 +203,7 @@ class _SignupPageState extends State<SignupPage> {
                         //314
                         height: height * 0.066,
                         //50
-                        padding: const EdgeInsets.only(
-                          left: 15,
-                          right: 15,
-                          top: 0,
-                          bottom: 0,
-                        ),
+                        padding: const EdgeInsets.fromLTRB(15.0, 0, 15.0, 0),
                         child: TextFormField(
                           textAlignVertical: TextAlignVertical.center,
                           validator: (value) {
@@ -485,12 +309,7 @@ class _SignupPageState extends State<SignupPage> {
                             width: width * 0.4,
                             height: height * 0.066,
                             //50
-                            padding: const EdgeInsets.only(
-                              left: 15,
-                              right: 15,
-                              top: 0,
-                              bottom: 0,
-                            ),
+                            padding: const  EdgeInsets.fromLTRB(15.0, 0, 15.0, 0),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(
@@ -511,12 +330,7 @@ class _SignupPageState extends State<SignupPage> {
                             width: width * 0.4,
                             height: height * 0.066,
                             //50
-                            padding: const EdgeInsets.only(
-                              left: 15,
-                              right: 15,
-                              top: 0,
-                              bottom: 0,
-                            ),
+                            padding: const  EdgeInsets.fromLTRB(15.0, 0, 15.0, 0),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(
@@ -538,27 +352,7 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                   //장애인이면 입력하는 박스 나오게
                   //Todo : show Row & Container only when 장애인 is selected
-                  Row(
-                    children: [
-                      SizedBox(
-                        height: height * 0.01,
-                        width: width * 0.05,
-                      ),
-                      SizedBox(
-                        height: height * 0.03,
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "도움이 필요한 부분",
-                            style: TextStyle(
-                              color: real_black,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  SignupInfoText(height, width, "도움이 필요한 부분"),
                   Container(
                     width: width * 0.85,
                     //314
@@ -613,7 +407,7 @@ class _SignupPageState extends State<SignupPage> {
                           return;
                         } else {
                           formKey.currentState!.save();
-                          Navigator.of(context).pop(); // 회원가입 후 이전화면으로 돌아가기
+                          Navigator.of(context).pop();
                         }
                       },
                       child: Text(
@@ -626,72 +420,6 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                     ),
                   ),
-
-                  // TODO : For ReportPopup Test
-                  // TODO : remove & make Navigate to popup page
-                  SizedBox(
-                    height: 100,
-                  ),
-                  Container(
-                      width: width * 0.48, //205
-                      height: height * 0.055, //45
-                      child: ElevatedButton(
-                          child: Text("신고하기"),
-                          style: TextButton.styleFrom(
-                            backgroundColor: emerald,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25)),
-                          ),
-                          onPressed: () {
-                            showDialog(
-                                context: context,
-                                barrierDismissible: false,
-                                builder: (BuildContext ctx) {
-                                  return AlertDialog(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0)),
-                                    title: Text("신고하기"),
-                                    content: Container(
-                                      height: height * 0.2,
-                                      width: width * 0.5,
-                                      padding: const EdgeInsets.only(
-                                        left: 15,
-                                        right: 15,
-                                        top: 5,
-                                        bottom: 5,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: main_color_light),
-                                      child: TextField(
-                                        keyboardType: TextInputType.multiline,
-                                        maxLines: null,
-                                        decoration: InputDecoration(
-                                            border: InputBorder.none,
-                                            hintText: "신고할 내용을 입력해주세요.",
-                                            hintStyle: TextStyle(
-                                              fontSize: 13,
-                                            )),
-                                      ),
-                                    ),
-                                    actions: [
-                                      //Todo : change onPressed func
-                                      TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: Text("신고취소")),
-                                      TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: Text("신고하기")),
-                                    ],
-                                  );
-                                });
-                          })),
                 ],
               ),
             ),
@@ -699,5 +427,96 @@ class _SignupPageState extends State<SignupPage> {
         ),
       ),
     );
+  }
+
+  Row SignupInfoText(double height, double width, String infoText) {
+    return Row(
+                  children: [
+                    SizedBox(
+                      height: height * 0.01,
+                      width: width * 0.05,
+                    ),
+                    SizedBox(
+                      height: height * 0.03,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          infoText,
+                          style: TextStyle(
+                            color: real_black,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+  }
+}
+
+class togglebutton extends StatefulWidget {
+  final String text1;
+  final String text2;
+
+  const togglebutton({Key? key, required this.text1, required this.text2})
+      : super(key: key);
+
+  @override
+  State<togglebutton> createState() => _togglebuttonState();
+}
+
+class _togglebuttonState extends State<togglebutton> {
+  String result = '';
+  bool istext1 = false;
+  bool istext2 = false;
+
+  late List<bool> isSelected;
+
+  void initState() {
+    isSelected = [istext1, istext2];
+    super.initState();
+  }
+
+  void toggleSelect(value) {
+    if (value == 0) {
+      istext1 = true;
+      istext2 = false;
+    } else {
+      istext1 = false;
+      istext2 = true;
+    }
+    setState(() {
+      isSelected = [istext1, istext2];
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          // final width = constraints.maxWidth;
+          // final height = constraints.maxHeight;
+          return Row(
+            children: [
+              ToggleButtons(
+                children: <Widget>[
+                  Text(widget.text1),
+                  Text(widget.text2),
+                ],
+                isSelected: isSelected,
+                onPressed: toggleSelect,
+                // renderBorder: false,
+                color: main_color,
+                fillColor: main_color,
+                borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                borderColor: main_color,
+                selectedColor: real_white,
+                constraints: BoxConstraints.expand(
+                    width: constraints.maxWidth / 2 - 3,
+                    height: constraints.maxHeight / 2 + 10),
+              )
+            ],
+          );
+        });
   }
 }
