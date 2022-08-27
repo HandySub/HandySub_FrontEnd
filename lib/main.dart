@@ -7,6 +7,7 @@ import 'package:handysub/pages/Login/signupPage.dart';
 import 'package:handysub/pages/Matching/matching_apply_disabled.dart';
 import 'package:handysub/pages/Matching/matching_list_disabled.dart';
 import 'package:handysub/pages/Matching/matching_pick_abled.dart';
+import 'package:handysub/pages/Matching/matching_review_disabled.dart';
 import 'package:handysub/pages/Matching/matching_waiting_disabled.dart';
 
 void main() {
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SignupPage(),
+                        builder: (context) => MatchingReviewPage(),
                       ),
                     );
                   },

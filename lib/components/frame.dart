@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:handysub/components/appBar.dart';
 import 'package:handysub/constants/colors.dart';
 
-Widget matchingFrame(BuildContext context, EdgeInsetsGeometry margin_,
-    String title_, Widget child_) {
+Widget matchingFrame(
+  BuildContext context,
+  EdgeInsetsGeometry margin_,
+  String title_,
+  Widget child_,
+) {
   final height = MediaQuery.of(context).size.height;
   final width = MediaQuery.of(context).size.width;
 

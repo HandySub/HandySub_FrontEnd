@@ -16,7 +16,7 @@ class MatchingWaitingDisabled extends StatefulWidget {
 }
 
 class _MatchingWaitingDisabledState extends State<MatchingWaitingDisabled> {
-  String ableUserName = "도우미A";
+  String ableUserNick = "도우미A";
   bool isChattingArrive = false;
   String messageOfAbled =
       '''깔끔한 흰색 셔츠에 검은 슬랙스 입고, 분홍색 모자를 썼으며 노란 스냅백 들고 있고 파란 운동화 신었습니다. 
@@ -58,7 +58,7 @@ class _MatchingWaitingDisabledState extends State<MatchingWaitingDisabled> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "$ableUserName님",
+            "$ableUserNick님",
             style: defaultBoldTextStyle(25.0),
           ),
           chatIcon()

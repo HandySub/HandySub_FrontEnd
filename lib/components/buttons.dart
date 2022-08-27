@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:handysub/constants/colors.dart';
 
@@ -29,7 +30,7 @@ Widget greenTextButton_4(String text) {
 }
 
 Widget greenTextButton(String text, VoidCallback buttonFunc) {
-  return TextButton(
+  return CupertinoButton(
     onPressed: () {
       buttonFunc();
     },
@@ -48,6 +49,7 @@ Widget greenTextButton(String text, VoidCallback buttonFunc) {
         child: Text(
           text,
           style: TextStyle(
+            fontFamily: 'GmarketSans',
             fontWeight: FontWeight.bold,
             fontSize: 20,
             color: emerald,
@@ -80,10 +82,10 @@ Widget greenDropDownButton(DropdownButton dropdownbutton) {
 class toggleButton extends StatefulWidget {
   final String text1;
   final String text2;
-  bool istext1Parent=false;
+  bool istext1Parent = false;
 
-
-  toggleButton({Key? key, required this.text1, required this.text2, istext1Parent})
+  toggleButton(
+      {Key? key, required this.text1, required this.text2, istext1Parent})
       : super(key: key);
 
   @override
@@ -95,24 +97,22 @@ class _toggleButtonState extends State<toggleButton> {
   bool istext2 = false;
   late List<bool> isSelected;
 
-
   void initState() {
     isSelected = [istext1, istext2];
     super.initState();
   }
 
-  void toggleSelect(value){
-    if(value==0){
+  void toggleSelect(value) {
+    if (value == 0) {
       istext1 = true;
       istext2 = false;
-    }
-    else{
+    } else {
       istext1 = false;
       istext2 = true;
     }
     setState(() {
       isSelected = [istext1, istext2];
-      widget.istext1Parent=istext1;
+      widget.istext1Parent = istext1;
     });
   }
 
@@ -120,26 +120,26 @@ class _toggleButtonState extends State<toggleButton> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          return Row(
-            children: [
-              ToggleButtons(
-                isSelected: isSelected,
-                onPressed: toggleSelect,
-                color: main_color,
-                fillColor: main_color,
-                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                borderColor: main_color,
-                selectedColor: real_white,
-                constraints: BoxConstraints.expand(
-                    width: constraints.maxWidth / 2 -3,
-                    height: constraints.maxHeight / 2 + 10),
-                children: <Widget>[
-                  Text(widget.text1),
-                  Text(widget.text2),
-                ],
-              )
+      return Row(
+        children: [
+          ToggleButtons(
+            isSelected: isSelected,
+            onPressed: toggleSelect,
+            color: main_color,
+            fillColor: main_color,
+            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+            borderColor: main_color,
+            selectedColor: real_white,
+            constraints: BoxConstraints.expand(
+                width: constraints.maxWidth / 2 - 3,
+                height: constraints.maxHeight / 2 + 10),
+            children: <Widget>[
+              Text(widget.text1),
+              Text(widget.text2),
             ],
-          );
-        });
+          )
+        ],
+      );
+    });
   }
 }

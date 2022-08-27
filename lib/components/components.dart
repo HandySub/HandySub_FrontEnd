@@ -42,3 +42,34 @@ Widget greenTextBox(String text, double height, double width) {
         ),
       ));
 }
+
+/// [height] and [width] - context's height and width. It's not box's height/width.
+///
+/// [text] is input Text.
+Widget greenTextFieldBox(String text, double height, double width) {
+  return Container(
+    height: height * 0.15,
+    width: width * 0.7,
+    padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+    decoration: BoxDecoration(
+      border: Border.all(
+        width: 2,
+        color: emerald,
+      ),
+      borderRadius: BorderRadius.circular(10),
+      // color: main_color_light
+    ),
+    child: TextField(
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        hintText: "메시지를 작성해주세요.",
+        hintStyle: TextStyle(
+          color: real_black_19,
+          fontSize: 14,
+        ),
+      ),
+    ),
+  );
+}
