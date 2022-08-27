@@ -99,6 +99,7 @@ class _MatchingReviewPageState extends State<MatchingReviewPage> {
       direction: Axis.horizontal,
       allowHalfRating: false,
       itemCount: 5,
+      glow: false,
       ratingWidget: RatingWidget(
         full: Image.asset(
           'assets/cookie_color.png',
