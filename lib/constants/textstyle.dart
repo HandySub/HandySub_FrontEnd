@@ -17,3 +17,11 @@ TextStyle defaultBoldTextStyle(double size_) {
     fontSize: size_,
   );
 }
+
+TextStyle defaultLightTextStyle(double size_) {
+  return TextStyle(
+      color: real_black,
+      fontFamily: 'GmarketSans',
+      fontWeight: FontWeight.w300,
+      fontSize: size_);
+}
