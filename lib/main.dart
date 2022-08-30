@@ -10,6 +10,8 @@ import 'package:handysub/pages/Matching/matching_pick_abled.dart';
 import 'package:handysub/pages/Matching/matching_review_disabled.dart';
 import 'package:handysub/pages/Matching/matching_waiting_disabled.dart';
 
+import 'pages/Chatting/chattingPage.dart';
+
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: main_color));
@@ -55,7 +57,7 @@ class MyApp extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MatchingReviewPage(),
+                        builder: (context) => ChattingPage(),
                       ),
                     );
                   },
