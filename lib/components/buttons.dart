@@ -60,6 +60,38 @@ Widget greenTextButton(String text, VoidCallback buttonFunc) {
   );
 }
 
+Widget greenTextButtonSmall(String text, VoidCallback buttonFunc) {
+  return CupertinoButton(
+    onPressed: () {
+      buttonFunc();
+    },
+    child: Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 2,
+          color: emerald,
+        ),
+        borderRadius: BorderRadius.all(
+          Radius.circular(12.0),
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(7, 11, 7, 11),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontFamily: 'GmarketSans',
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+            color: emerald,
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+
 Widget greenDropDownButton(DropdownButton dropdownbutton) {
   return Container(
     margin: EdgeInsets.fromLTRB(10, 0, 10, 0),

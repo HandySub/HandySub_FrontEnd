@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../components/buttons.dart';
 import '../../components/counter.dart';
@@ -13,6 +14,7 @@ Widget matchingPickPopUp(BuildContext context, Widget child, String station1, St
             barrierDismissible: false,
             builder: (BuildContext buildContext){
               return AlertDialog(
+                scrollable: true,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0)
                   ),
@@ -24,7 +26,7 @@ Widget matchingPickPopUp(BuildContext context, Widget child, String station1, St
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           stationBox(station1),
                           Icon(
@@ -52,7 +54,7 @@ Widget matchingPickPopUp(BuildContext context, Widget child, String station1, St
                       SizedBox(height: height*0.02,),
                       Container(
                         height: height * 0.13,
-                        width: width * 0.6,
+                        width: width*0.8,
                         padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -76,12 +78,18 @@ Widget matchingPickPopUp(BuildContext context, Widget child, String station1, St
                           ),
                         ),
                       ),
+
                     ],
                   ),
                   actions: [
                     //Todo : change onPressed func
-                    greenTextButton("매칭 취소", () {Navigator.of(context, rootNavigator: true).pop();}),
-                    greenTextButton("매칭 신청", () {Navigator.of(context, rootNavigator: true).pop();}),
+                    Row(
+                      children: [
+                        greenTextButtonSmall("매칭 취소", () {Navigator.of(context, rootNavigator: true).pop();}),
+                        greenTextButtonSmall("매칭 신청", () {Navigator.of(context, rootNavigator: true).pop();}),
+                      ],
+                    ),
+
                   ]
               );
             });
@@ -92,9 +100,10 @@ Widget matchingPickPopUp(BuildContext context, Widget child, String station1, St
 Widget stationBox(String station) {
   return Row(
     children: [
-      SizedBox(
+      Container(
         height: 22,
         width: 22,
+        margin: const EdgeInsets.all(2),
         // TODO : Change Dynamic
         child: Image.asset(
           'assets/metro_line/Seoul_Metro_Line_1.png',
@@ -103,11 +112,9 @@ Widget stationBox(String station) {
           colorBlendMode: BlendMode.modulate,
         ),
       ),
-      SizedBox(
-        width: 10,
-      ),
-      SizedBox(
+      Container(
         width: 70,
+        margin: const EdgeInsets.all(2),
         child: Text(
           station,
           textAlign: TextAlign.center,
@@ -116,4 +123,5 @@ Widget stationBox(String station) {
     ],
   );
 }
+
 
