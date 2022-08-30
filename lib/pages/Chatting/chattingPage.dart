@@ -5,6 +5,7 @@ import 'package:handysub/constants/textstyle.dart';
 import 'package:handysub/pages/Chatting/chatMessage.dart';
 
 class ChattingPage extends StatefulWidget {
+
   const ChattingPage({Key? key}) : super(key: key);
 
   @override
@@ -74,7 +75,6 @@ class _ChattingPageState extends State<ChattingPage> {
     return ListView.builder(
         shrinkWrap: true,
         reverse: true,
-
         padding: const EdgeInsets.all(8),
         itemCount: messageList.length,
         itemBuilder: (BuildContext context, int index){
@@ -84,7 +84,8 @@ class _ChattingPageState extends State<ChattingPage> {
 
   void textSubmit(String text){
     _textEditingController.clear();
-    ChatMessage newMessage = ChatMessage(text, 0);
+    final DateTime now=DateTime.now();
+    ChatMessage newMessage = ChatMessage(text, 0, now);
     setState(() {
       messageList.insert(0, newMessage);
 

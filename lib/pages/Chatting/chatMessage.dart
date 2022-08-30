@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
-
+import 'package:intl/intl.dart';
 import '../../constants/colors.dart';
 import '../../constants/textstyle.dart';
 
 class ChatMessage extends StatelessWidget {
   final String text;
   final int userId;
-  const ChatMessage(this.text, this.userId, {Key? key}) : super(key: key);
+  final DateTime now;
+
+  const ChatMessage(this.text, this.userId, this.now, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return userId == 0
-        ? myMessage(context, text)
-        : opponentMessage(context, text);
+        ? myMessage(context, text, now)
+        : opponentMessage(context, text, now);
   }
 }
 
-Widget myMessage(BuildContext context, String text) {
+Widget myMessage(BuildContext context, String text, DateTime now) {
   final width = MediaQuery.of(context).size.width;
   return Row(
     mainAxisAlignment: MainAxisAlignment.end,
     children: [
+      Text(
+        DateFormat.Hm().format(now),
+        style: defaultTextStyle(10),
+      ),
       Container(
         margin: const EdgeInsets.fromLTRB(5, 6, 5, 6),
         padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
@@ -44,7 +51,7 @@ Widget myMessage(BuildContext context, String text) {
   );
 }
 
-Widget opponentMessage(BuildContext context, String text) {
+Widget opponentMessage(BuildContext context, String text, DateTime now) {
   final width = MediaQuery.of(context).size.width;
   return Row(
     mainAxisAlignment: MainAxisAlignment.start,
@@ -67,6 +74,10 @@ Widget opponentMessage(BuildContext context, String text) {
             color: real_white,
           ),
         ),
+      ),
+      Text(
+        DateFormat.Hm().format(now),
+        style: defaultTextStyle(10),
       ),
     ],
   );
