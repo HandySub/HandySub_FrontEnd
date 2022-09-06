@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:handysub/components/frame.dart';
 import 'package:handysub/constants/colors.dart';
+import 'package:handysub/constants/textstyle.dart';
 import 'package:handysub/pages/Login/loginPage.dart';
 import 'package:handysub/pages/Login/signupPage.dart';
 import 'package:handysub/pages/Matching/matching_apply_disabled.dart';
@@ -18,6 +19,8 @@ void main() {
   runApp(MyApp());
 }
 
+final GlobalKey<ScaffoldState> drawerKey_ = GlobalKey();
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,23 @@ class MyApp extends StatelessWidget {
         final height = MediaQuery.of(context).size.height;
         final width = MediaQuery.of(context).size.width;
         return Scaffold(
+          key: drawerKey_,
+          endDrawer: Drawer(
+            child: ListView(
+              children: [
+                DrawerHeader(
+                  decoration: BoxDecoration(color: main_color),
+                  child: Text(
+                    "도우미A",
+                    style: defaultTextStyle(14),
+                  ),
+                ),
+                ListTile(
+                  title: Text("Menu"),
+                ),
+              ],
+            ),
+          ),
           body: Stack(
             children: [
               SizedBox(
@@ -57,7 +77,7 @@ class MyApp extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ChattingPage(),
+                        builder: (context) => MatchingPickAbled(),
                       ),
                     );
                   },

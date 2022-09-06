@@ -54,137 +54,132 @@ class _MatchingPickAbledState extends State<MatchingPickAbled> {
     // TODO : remove code under
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
-    return MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'GmarketSans',
-      ),
-      home: Container(
-        color: main_color,
-        child: SafeArea(
-          child: Scaffold(
-            backgroundColor: real_white,
-            // * AppBar
-            appBar: defaultAppBar(context, "매칭 선택", real_white),
-            // * Body of MaterialApp
-            body: Column(
-              children: [
-                // Just for Alignment
-                SizedBox(
-                  height: height * 0.025,
-                  width: width,
-                ),
-                // * Select DropDownButton Row
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    // * Select Container 1
-                    Container(
-                      height: 30,
-                      width: 125,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 2,
-                          color: emerald,
-                        ),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(12.0),
-                        ),
+    return Container(
+      color: main_color,
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: real_white,
+          // * AppBar
+          appBar: defaultAppBar(context, "매칭 선택", real_white),
+          // * Body of MaterialApp
+          body: Column(
+            children: [
+              // Just for Alignment
+              SizedBox(
+                height: height * 0.025,
+                width: width,
+              ),
+              // * Select DropDownButton Row
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // * Select Container 1
+                  Container(
+                    height: 30,
+                    width: 125,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 2,
+                        color: emerald,
                       ),
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(5.0, 0, 5.0, 0),
-                        child: DropdownButton(
-                          underline: SizedBox(),
-                          hint: Center(
-                            child: Text(
-                              "출발 호선",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ),
-                          isExpanded: true,
-                          value: dropDownValue1,
-                          icon: const Icon(Icons.keyboard_arrow_down),
-                          items: dropDownList.map((String items) {
-                            return DropdownMenuItem(
-                              value: items,
-                              child: Center(
-                                child: Text(
-                                  items,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ),
-                            );
-                          }).toList(),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              dropDownValue1 = newValue ?? "";
-                            });
-                          },
-                        ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(12.0),
                       ),
                     ),
-                    // * Select Container 2
-                    Container(
-                      height: 30,
-                      width: 125,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 2,
-                          color: emerald,
-                        ),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(12.0),
-                        ),
-                      ),
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(5.0, 0, 5.0, 0),
-                        child: DropdownButton(
-                          underline: SizedBox(),
-                          hint: Center(
-                            child: Text(
-                              "도착 호선",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 13,
-                              ),
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(5.0, 0, 5.0, 0),
+                      child: DropdownButton(
+                        underline: SizedBox(),
+                        hint: Center(
+                          child: Text(
+                            "출발 호선",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
                             ),
                           ),
-                          isExpanded: true,
-                          value: dropDownValue2,
-                          icon: const Icon(Icons.keyboard_arrow_down),
-                          items: dropDownList.map((String items) {
-                            return DropdownMenuItem(
-                              value: items,
-                              child: Center(
-                                child: Text(
-                                  items,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                  ),
+                        ),
+                        isExpanded: true,
+                        value: dropDownValue1,
+                        icon: const Icon(Icons.keyboard_arrow_down),
+                        items: dropDownList.map((String items) {
+                          return DropdownMenuItem(
+                            value: items,
+                            child: Center(
+                              child: Text(
+                                items,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13,
                                 ),
                               ),
-                            );
-                          }).toList(),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              dropDownValue2 = newValue ?? "";
-                            });
-                          },
-                        ),
+                            ),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropDownValue1 = newValue ?? "";
+                          });
+                        },
                       ),
                     ),
-                  ],
-                ),
-                // * ListView
-                Expanded(child: applyListBuilder())
-              ],
-            ),
+                  ),
+                  // * Select Container 2
+                  Container(
+                    height: 30,
+                    width: 125,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 2,
+                        color: emerald,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(12.0),
+                      ),
+                    ),
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(5.0, 0, 5.0, 0),
+                      child: DropdownButton(
+                        underline: SizedBox(),
+                        hint: Center(
+                          child: Text(
+                            "도착 호선",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ),
+                        isExpanded: true,
+                        value: dropDownValue2,
+                        icon: const Icon(Icons.keyboard_arrow_down),
+                        items: dropDownList.map((String items) {
+                          return DropdownMenuItem(
+                            value: items,
+                            child: Center(
+                              child: Text(
+                                items,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13,
+                                ),
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropDownValue2 = newValue ?? "";
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              // * ListView
+              Expanded(child: applyListBuilder())
+            ],
           ),
         ),
       ),
@@ -198,7 +193,12 @@ class _MatchingPickAbledState extends State<MatchingPickAbled> {
         padding: const EdgeInsets.all(8),
         itemCount: startStation.length,
         itemBuilder: (BuildContext context, int index) {
-          return matchingPickPopUp(context, applyListItem(startStation[index], startStation[index]), startStation[index], startStation[index], index);
+          return matchingPickPopUp(
+              context,
+              applyListItem(startStation[index], startStation[index]),
+              startStation[index],
+              startStation[index],
+              index);
           return applyListItem(startStation[index], startStation[index]);
         });
   }
