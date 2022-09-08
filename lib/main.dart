@@ -10,13 +10,18 @@ import 'package:handysub/pages/Matching/matching_list_disabled.dart';
 import 'package:handysub/pages/Matching/matching_pick_abled.dart';
 import 'package:handysub/pages/Matching/matching_review_disabled.dart';
 import 'package:handysub/pages/Matching/matching_waiting_disabled.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 import 'pages/Chatting/chattingPage.dart';
 
-void main() {
+void main() async {
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: main_color));
   runApp(MyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
 
 final GlobalKey<ScaffoldState> drawerKey_ = GlobalKey();
@@ -73,6 +78,7 @@ class MyApp extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30)),
                       minimumSize: Size(width * 0.8, 45)),
                   onPressed: () {
+                    Navigator.pop(context);
                     // TODO: make Navigate to Login Page.
                     Navigator.push(
                       context,

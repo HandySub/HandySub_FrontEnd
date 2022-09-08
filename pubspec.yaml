@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_rating_bar: ^4.0.1
   flutter_zoom_drawer: ^3.0.3
+  firebase_core: ^1.21.1
+  cloud_firestore: ^3.4.6
+  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_test:
