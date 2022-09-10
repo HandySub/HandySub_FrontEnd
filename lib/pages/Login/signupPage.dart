@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:handysub/Models/UserModel.dart';
+import 'package:handysub/Providers/UserProvider.dart';
+import 'package:handysub/VIewModels/signUpViewModel.dart';
 import 'package:handysub/components/buttons.dart';
 import 'package:handysub/components/sidebar.dart';
 import 'package:handysub/constants/colors.dart';
@@ -15,19 +19,17 @@ final GlobalKey<ScaffoldState> signupPageKey_ = GlobalKey();
 
 class _SignupPageState extends State<SignupPage> {
   final formKey = GlobalKey<FormState>();
-  String userEmail = "";
-  String userPwd = "";
-  String userPwd2 = "";
-  String userNickname = "";
-  String userDisabledInfo = "";
+  String userEmail = "abc@naver.com";
+  String userPwd = "awe";
+  String userPwd2 = "af";
+  String userNickname = "asdf";
+  String userDisabledInfo = "asdf";
 
   /* Todo : connect parameters to toggle buttons
           ->  show SignupInfoText & Container
               only when 장애인 is selected */
-  bool isHandicapped = false;
-  bool isNonHandicapped = false;
-  bool isMale = false;
-  bool isFemale = false;
+  bool handicapped = true;
+  bool sex = true;
 
   toggleButton toggleButtonSex = toggleButton(text1: "남성", text2: "여성");
   toggleButton toggleButtonDisabled = toggleButton(text1: "장애인", text2: "비장애인");
@@ -101,9 +103,9 @@ class _SignupPageState extends State<SignupPage> {
                       SignupInfoContainer(width, height, false,
                           emailValidator(), userEmail, "jw101902@naver.com"),
                       Positioned(
-                        top: height * 0.009,
+                        top: height * 0.012,
                         right: width * 0.019,
-                        child: Container(
+                        child: SizedBox(
                           width: width * 0.24,
                           height: height * 0.041,
                           child: ElevatedButton(
@@ -146,11 +148,11 @@ class _SignupPageState extends State<SignupPage> {
                   Stack(
                     children: [
                       SignupInfoContainer(width, height, false,
-                          nickNameValidator(), userNickname, "닉네임 예시"),
+                          nickNameValidator(), userNickname, "닉네임을 입력하세요"),
                       Positioned(
-                        top: height * 0.009,
+                        top: height * 0.012,
                         right: width * 0.019,
-                        child: Container(
+                        child: SizedBox(
                           width: width * 0.24,
                           height: height * 0.041,
                           child: ElevatedButton(
@@ -194,9 +196,8 @@ class _SignupPageState extends State<SignupPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      toggleButtonContainer(width, height, toggleButtonSex),
-                      toggleButtonContainer(
-                          width, height, toggleButtonDisabled),
+                      sex_button(width, height),
+                      handicapped_button(width, height),
                     ],
                   ),
                   SizedBox(
@@ -251,8 +252,11 @@ class _SignupPageState extends State<SignupPage> {
                           return;
                         } else {
                           formKey.currentState!.save();
-                          Navigator.of(context).pop();
+                          // Navigator.of(context).pop();
                         }
+                        // ! SignUp Logic
+                        print(userEmail);
+                        signUp();
                       },
                       child: Text(
                         "회원가입",
@@ -265,6 +269,81 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                   ),
                 ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  signUp() {
+    User user = User(
+      userEmail,
+      userPwd,
+      userNickname,
+      sex,
+      handicapped,
+      userDisabledInfo,
+      3.0,
+    );
+    UserProvider().setUserData(user);
+    SignUpViewModel().signUp(user);
+  }
+
+  Widget sex_button(double width, double height) {
+    return CupertinoButton(
+      onPressed: () {
+        setState(() {
+          sex = !sex;
+        });
+      },
+      child: Container(
+        width: width * 0.3,
+        height: height * 0.066,
+        decoration: BoxDecoration(
+            // TODO : Change Color to lightGreen
+            color: sex
+                ? Colors.blue.withOpacity(0.6)
+                : Colors.pink.withOpacity(0.6),
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+            child: Text(
+              sex ? "남성" : "여성",
+              style: TextStyle(
+                  fontFamily: 'GmarketSans', fontSize: 14, color: Colors.white),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget handicapped_button(double width, double height) {
+    return CupertinoButton(
+      onPressed: () {
+        setState(() {
+          handicapped = !handicapped;
+        });
+      },
+      child: Container(
+        width: width * 0.3,
+        height: height * 0.066,
+        decoration: BoxDecoration(
+            // TODO : Change Color to lightGreen
+            color: handicapped ? main_color : Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+            child: Text(
+              handicapped ? "장애인" : "비장애인",
+              style: TextStyle(
+                fontFamily: 'GmarketSans',
+                fontSize: 14,
+                color: handicapped ? Colors.white : main_color,
               ),
             ),
           ),
@@ -311,6 +390,7 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget SignupInfoContainer(double width, double height, bool isobscureText,
       Function(String?)? validator, String savedAt, String hintText) {
     return Container(
@@ -325,13 +405,15 @@ class _SignupPageState extends State<SignupPage> {
         ),
       ),
       child: TextFormField(
-        obscureText: isobscureText,
-        textAlignVertical: TextAlignVertical.center,
-        validator: (value) {
-          validator;
-        },
-        onSaved: (value) {
-          savedAt = value!;
+        // obscureText: isobscureText,
+        // textAlignVertical: TextAlignVertical.center,
+        // validator: (value) {
+        //   validator;
+        // },
+        onChanged: (value) {
+          setState(() {
+            savedAt = value;
+          });
         },
         decoration: InputDecoration(
             border: InputBorder.none,
@@ -344,6 +426,7 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget SignupInfoText(double height, double width, String infoText) {
     return Row(
       children: [
