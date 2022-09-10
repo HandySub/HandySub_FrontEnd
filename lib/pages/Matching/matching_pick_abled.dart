@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:handysub/components/sidebar.dart';
 import 'package:handysub/constants/colors.dart';
 import 'package:handysub/components/appBar.dart';
 import 'matching_pick_PopUp.dart';
@@ -47,6 +48,9 @@ class _MatchingPickAbledState extends State<MatchingPickAbled> {
   ];
   List<String> finishStation = <String>["이수역", "강남역", "종로3가"];
 
+  final GlobalKey<ScaffoldState> matchingPickKey_ = GlobalKey();
+
+  final GlobalKey<ScaffoldState> drawerKey_ = GlobalKey();
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -58,9 +62,11 @@ class _MatchingPickAbledState extends State<MatchingPickAbled> {
       color: main_color,
       child: SafeArea(
         child: Scaffold(
+          key: matchingPickKey_,
+          endDrawer: SidebarDrawer(),
           backgroundColor: real_white,
           // * AppBar
-          appBar: defaultAppBar(context, "매칭 선택", real_white),
+          appBar: defaultAppBar(context, "매칭 선택", real_white, matchingPickKey_),
           // * Body of MaterialApp
           body: Column(
             children: [

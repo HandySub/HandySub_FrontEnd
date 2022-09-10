@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:handysub/components/appBar.dart';
+import 'package:handysub/components/sidebar.dart';
 import 'package:handysub/constants/colors.dart';
 import 'package:handysub/constants/textstyle.dart';
 
@@ -9,6 +10,8 @@ class ChattingList extends StatefulWidget {
   @override
   State<ChattingList> createState() => _ChattingListState();
 }
+
+final GlobalKey<ScaffoldState> chattingListKey_ = GlobalKey();
 
 class _ChattingListState extends State<ChattingList> {
   List<String> userNickName = <String>[
@@ -47,8 +50,10 @@ class _ChattingListState extends State<ChattingList> {
         fontFamily: 'GmarketSans',
       ),
       home: Scaffold(
+        key: chattingListKey_,
         backgroundColor: real_white,
-        appBar: defaultAppBar(context, "채팅 리스트", real_white),
+        endDrawer: SidebarDrawer(),
+        appBar: defaultAppBar(context, "채팅 리스트", real_white, chattingListKey_),
         body: Column(
           children: [
             SizedBox(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:handysub/components/buttons.dart';
+import 'package:handysub/components/sidebar.dart';
 import 'package:handysub/constants/colors.dart';
 import 'package:handysub/components/appBar.dart';
 
@@ -11,6 +12,8 @@ class MatchingApplyPage_Disabled extends StatefulWidget {
   State<MatchingApplyPage_Disabled> createState() =>
       _MatchingApplyPage_DisabledState();
 }
+
+final GlobalKey<ScaffoldState> matchingApplyDisabledKey_ = GlobalKey();
 
 class _MatchingApplyPage_DisabledState
     extends State<MatchingApplyPage_Disabled> {
@@ -54,8 +57,10 @@ class _MatchingApplyPage_DisabledState
         color: main_color,
         child: SafeArea(
           child: Scaffold(
-            appBar:
-                defaultAppBar(context, "매칭 리스트", real_black.withOpacity(0.09)),
+            key: matchingApplyDisabledKey_,
+            endDrawer: SidebarDrawer(),
+            appBar: defaultAppBar(context, "매칭 리스트",
+                real_black.withOpacity(0.09), matchingApplyDisabledKey_),
             body: Container(
               color: real_black.withOpacity(0.09),
               child: Center(

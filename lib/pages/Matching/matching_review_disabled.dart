@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:handysub/components/buttons.dart';
 import 'package:handysub/components/components.dart';
 import 'package:handysub/components/frame.dart';
+import 'package:handysub/components/sidebar.dart';
 import 'package:handysub/constants/colors.dart';
 import 'package:handysub/constants/textstyle.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -13,6 +14,8 @@ class MatchingReviewPage extends StatefulWidget {
   @override
   State<MatchingReviewPage> createState() => _MatchingReviewPageState();
 }
+
+final GlobalKey<ScaffoldState> matchingReviewDisabledKey_ = GlobalKey();
 
 class _MatchingReviewPageState extends State<MatchingReviewPage> {
   String ableUserNick = "도우미A";
@@ -25,24 +28,28 @@ class _MatchingReviewPageState extends State<MatchingReviewPage> {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
 
-    return matchingFrame(
-      context,
-      EdgeInsets.fromLTRB(
-        width * 0.07,
-        height * 0.05,
-        width * 0.07,
-        height * 0.2,
-      ),
-      "매칭 리스트",
-      Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          userNick_reportIcon(),
-          ratingCookie(),
-          thanksMessage(),
-          greenTextButton("리뷰 남기기", () {}),
-        ],
-      ),
+    return Scaffold(
+      key: matchingReviewDisabledKey_,
+      endDrawer: SidebarDrawer(),
+      body: matchingFrame(
+          context,
+          EdgeInsets.fromLTRB(
+            width * 0.07,
+            height * 0.05,
+            width * 0.07,
+            height * 0.2,
+          ),
+          "매칭 리스트",
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              userNick_reportIcon(),
+              ratingCookie(),
+              thanksMessage(),
+              greenTextButton("리뷰 남기기", () {}),
+            ],
+          ),
+          matchingReviewDisabledKey_),
     );
   }
 

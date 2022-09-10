@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:handysub/components/sidebar.dart';
 import 'package:handysub/constants/colors.dart';
 import 'package:handysub/pages/Login/signupPage.dart';
 
 import '../../components/appBar.dart';
+
+final GlobalKey<ScaffoldState> loginPageKey_ = GlobalKey();
 
 //Todo : change TextField to TextFieldForm
 //Todo : Make sign in with kakao func
@@ -22,7 +25,9 @@ class LoginPage extends StatelessWidget {
         fontFamily: 'GmarketSans',
       ),
       home: Scaffold(
-        appBar: defaultAppBar(context, "로그인", real_white),
+        key: loginPageKey_,
+        endDrawer: SidebarDrawer(),
+        appBar: defaultAppBar(context, "로그인", real_white, loginPageKey_),
         body: SingleChildScrollView(
           child: Container(
             color: real_white,
@@ -75,8 +80,11 @@ class LoginPage extends StatelessWidget {
                       height: height * 0.05,
                       child: TextButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => SignupPage()),);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignupPage()),
+                          );
                         },
                         child: Text(
                           "회원가입",
@@ -89,9 +97,9 @@ class LoginPage extends StatelessWidget {
                       height: height * 0.05,
                       child: Center(
                           child: Text(
-                            "|",
-                            style: TextStyle(color: real_black_65),
-                          )),
+                        "|",
+                        style: TextStyle(color: real_black_65),
+                      )),
                     ),
                     Container(
                       width: width * 0.26,
@@ -109,9 +117,9 @@ class LoginPage extends StatelessWidget {
                       height: height * 0.05,
                       child: Center(
                           child: Text(
-                            "|",
-                            style: TextStyle(color: real_black_65),
-                          )),
+                        "|",
+                        style: TextStyle(color: real_black_65),
+                      )),
                     ),
                     Container(
                       width: width * 0.29,
@@ -146,9 +154,9 @@ class LoginPage extends StatelessWidget {
                       height: height * 0.03,
                       child: Center(
                           child: Text(
-                            "  또는  ",
-                            style: TextStyle(color: real_black_65),
-                          )),
+                        "  또는  ",
+                        style: TextStyle(color: real_black_65),
+                      )),
                     ),
                     Container(
                       width: width * 0.3,
@@ -221,39 +229,42 @@ class LoginPage extends StatelessWidget {
 
   Widget InputBox(double width, double height, String hintText) {
     return Container(
-                width: width * 0.85,
-                height: height * 0.066,
-                padding: const EdgeInsets.only(
-                  left: 15,
-                  right: 15,
-                  top: 0,
-                  bottom: 0,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    width: 1,
-                    color: real_black,
-                  ),
-                ),
-                child: TextField(
-                  textAlignVertical: TextAlignVertical.center,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: hintText,
-                    hintStyle: TextStyle(
-                      color: real_black_19,
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-              );
+      width: width * 0.85,
+      height: height * 0.066,
+      padding: const EdgeInsets.only(
+        left: 15,
+        right: 15,
+        top: 0,
+        bottom: 0,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          width: 1,
+          color: real_black,
+        ),
+      ),
+      child: TextField(
+        textAlignVertical: TextAlignVertical.center,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: hintText,
+          hintStyle: TextStyle(
+            color: real_black_19,
+            fontSize: 15,
+          ),
+        ),
+      ),
+    );
   }
 
   Widget LoginInfoText(double height, double width, String logininfo) {
     return Row(
       children: [
-        SizedBox(height: height * 0.01, width: width * 0.05,),
+        SizedBox(
+          height: height * 0.01,
+          width: width * 0.05,
+        ),
         SizedBox(
           height: height * 0.03,
           child: Align(
@@ -270,8 +281,4 @@ class LoginPage extends StatelessWidget {
       ],
     );
   }
-  }
-
-
-
-
+}

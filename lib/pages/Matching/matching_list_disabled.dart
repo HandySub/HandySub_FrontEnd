@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:handysub/components/appBar.dart';
+import 'package:handysub/components/sidebar.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/textstyle.dart';
@@ -14,6 +15,7 @@ class MatchingListDisabled extends StatefulWidget {
   State<MatchingListDisabled> createState() => _MatchingListDisabledState();
 }
 
+final GlobalKey<ScaffoldState> matchingListDisabledKey_ = GlobalKey();
 
 class _MatchingListDisabledState extends State<MatchingListDisabled> {
   List<String> startStation = <String>["충무로", "충무로", "충무로", "성수", "동대문역사문화공원"];
@@ -47,8 +49,11 @@ class _MatchingListDisabledState extends State<MatchingListDisabled> {
         fontFamily: 'GmarketSans',
       ),
       home: Scaffold(
+        key: matchingListDisabledKey_,
+        endDrawer: SidebarDrawer(),
         backgroundColor: real_white,
-        appBar: defaultAppBar(context, "매칭 리스트", real_white),
+        appBar: defaultAppBar(
+            context, "매칭 리스트", real_white, matchingListDisabledKey_),
         body: Column(
           children: [
             SizedBox(
@@ -89,62 +94,61 @@ class _MatchingListDisabledState extends State<MatchingListDisabled> {
         ),
         height: 70,
         child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 22,
-                ),
-                Container(
-                  height: 22,
-                  width: 22,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: state,
-                  ),
-                  child: Icon(
-                    Icons.check,
-                    color: real_white,
-                    size: 15,
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                  height: 10,
-                ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children:[
-                      Text(
-                        station1,
-                        style: defaultTextStyle(15.0),
-                      ),
-                      Icon(
-                        Icons.east,
-                        color: real_black_65,
-                        size: 15,
-                      ),
-                      Text(
-                        station2,
-                        style:  defaultTextStyle(15.0),
-                      ),
-                    ],
-                  ),
-                  Text(
-                    date,
-                    style: TextStyle(
-                      color: real_black_65,
-                    ),
-                  )
-                ],
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 22,
+            ),
+            Container(
+              height: 22,
+              width: 22,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: state,
               ),
+              child: Icon(
+                Icons.check,
+                color: real_white,
+                size: 15,
+              ),
+            ),
+            SizedBox(
+              width: 10,
+              height: 10,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      station1,
+                      style: defaultTextStyle(15.0),
+                    ),
+                    Icon(
+                      Icons.east,
+                      color: real_black_65,
+                      size: 15,
+                    ),
+                    Text(
+                      station2,
+                      style: defaultTextStyle(15.0),
+                    ),
+                  ],
+                ),
+                Text(
+                  date,
+                  style: TextStyle(
+                    color: real_black_65,
+                  ),
+                )
               ],
             ),
+          ],
+        ),
       ),
     );
   }
-
 }

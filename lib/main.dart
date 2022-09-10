@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:handysub/components/frame.dart';
+import 'package:handysub/components/sidebar.dart';
 import 'package:handysub/constants/colors.dart';
 import 'package:handysub/constants/textstyle.dart';
 import 'package:handysub/pages/Login/loginPage.dart';
@@ -24,7 +25,7 @@ void main() async {
   );
 }
 
-final GlobalKey<ScaffoldState> drawerKey_ = GlobalKey();
+final GlobalKey<ScaffoldState> mainKey_ = GlobalKey();
 
 class MyApp extends StatelessWidget {
   @override
@@ -38,23 +39,8 @@ class MyApp extends StatelessWidget {
         final height = MediaQuery.of(context).size.height;
         final width = MediaQuery.of(context).size.width;
         return Scaffold(
-          key: drawerKey_,
-          endDrawer: Drawer(
-            child: ListView(
-              children: [
-                DrawerHeader(
-                  decoration: BoxDecoration(color: main_color),
-                  child: Text(
-                    "도우미A",
-                    style: defaultTextStyle(14),
-                  ),
-                ),
-                ListTile(
-                  title: Text("Menu"),
-                ),
-              ],
-            ),
-          ),
+          key: mainKey_,
+          endDrawer: SidebarDrawer(),
           body: Stack(
             children: [
               SizedBox(
@@ -78,7 +64,7 @@ class MyApp extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30)),
                       minimumSize: Size(width * 0.8, 45)),
                   onPressed: () {
-                    Navigator.pop(context);
+                    // Navigator.pop(context);
                     // TODO: make Navigate to Login Page.
                     Navigator.push(
                       context,

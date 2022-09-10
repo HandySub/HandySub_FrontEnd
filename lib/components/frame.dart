@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:handysub/components/appBar.dart';
+import 'package:handysub/components/sidebar.dart';
 import 'package:handysub/constants/colors.dart';
 
 Widget matchingFrame(
@@ -7,6 +8,7 @@ Widget matchingFrame(
   EdgeInsetsGeometry margin_,
   String title_,
   Widget child_,
+  GlobalKey<ScaffoldState> drawerKey_,
 ) {
   final height = MediaQuery.of(context).size.height;
   final width = MediaQuery.of(context).size.width;
@@ -15,7 +17,8 @@ Widget matchingFrame(
     color: main_color,
     child: SafeArea(
       child: Scaffold(
-        appBar: defaultAppBar(context, title_, lightgray),
+        endDrawer: SidebarDrawer(),
+        appBar: defaultAppBar(context, title_, lightgray, drawerKey_),
         body: Container(
           color: lightgray,
           child: Center(

@@ -4,8 +4,8 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:handysub/constants/colors.dart';
 import 'package:handysub/main.dart';
 
-PreferredSizeWidget defaultAppBar(
-    BuildContext context, String titleText, Color backGroundColor) {
+PreferredSizeWidget defaultAppBar(BuildContext context, String titleText,
+    Color backGroundColor, GlobalKey<ScaffoldState> drawerKey_) {
   return AppBar(
     backgroundColor: backGroundColor,
     elevation: 0,
@@ -26,7 +26,7 @@ PreferredSizeWidget defaultAppBar(
         tooltip: 'Menu',
         iconSize: 30,
         onPressed: () {
-          // drawerKey_.currentState!.openEndDrawer();
+          drawerKey_.currentState!.openEndDrawer();
           // Scaffold.of(context).openEndDrawer();
           // TODO : Add Menu Func.
         },

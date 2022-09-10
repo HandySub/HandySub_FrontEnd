@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:handysub/components/buttons.dart';
+import 'package:handysub/components/sidebar.dart';
 import 'package:handysub/constants/colors.dart';
 import '../../components/appBar.dart';
 
@@ -9,6 +10,8 @@ class SignupPage extends StatefulWidget {
   @override
   State<SignupPage> createState() => _SignupPageState();
 }
+
+final GlobalKey<ScaffoldState> signupPageKey_ = GlobalKey();
 
 class _SignupPageState extends State<SignupPage> {
   final formKey = GlobalKey<FormState>();
@@ -26,11 +29,11 @@ class _SignupPageState extends State<SignupPage> {
   bool isMale = false;
   bool isFemale = false;
 
-  toggleButton toggleButtonSex=toggleButton(text1: "남성", text2: "여성");
-  toggleButton toggleButtonDisabled=toggleButton(text1: "장애인", text2: "비장애인");
+  toggleButton toggleButtonSex = toggleButton(text1: "남성", text2: "여성");
+  toggleButton toggleButtonDisabled = toggleButton(text1: "장애인", text2: "비장애인");
 
-  Function(String?)? emailValidator(){
-    return (value){
+  Function(String?)? emailValidator() {
+    return (value) {
       if (value!.isEmpty || !value.contains("@")) {
         return "유효한 이메일을 입력해주세요.";
       }
@@ -38,8 +41,8 @@ class _SignupPageState extends State<SignupPage> {
     };
   }
 
-  Function(String?)? pwdValidator(){
-    return (value){
+  Function(String?)? pwdValidator() {
+    return (value) {
       if (value!.length < 8) {
         return "비밀번호는 8자 이상 입력해주세요.";
       }
@@ -50,8 +53,8 @@ class _SignupPageState extends State<SignupPage> {
     };
   }
 
-  Function(String?)? pwd2Validator(){
-    return (value){
+  Function(String?)? pwd2Validator() {
+    return (value) {
       if (value != userPwd) {
         return "입력한 비밀번호와 다릅니다.";
       }
@@ -62,8 +65,8 @@ class _SignupPageState extends State<SignupPage> {
     };
   }
 
-  Function(String?)? nickNameValidator(){
-    return (value){
+  Function(String?)? nickNameValidator() {
+    return (value) {
       if (value!.isEmpty) {
         return "닉네임을 입력해주세요.";
       }
@@ -80,8 +83,10 @@ class _SignupPageState extends State<SignupPage> {
         fontFamily: 'GmarketSans',
       ),
       home: Scaffold(
+        key: signupPageKey_,
+        endDrawer: SidebarDrawer(),
         backgroundColor: real_white,
-        appBar: defaultAppBar(context, "회원가입", real_white),
+        appBar: defaultAppBar(context, "회원가입", real_white, signupPageKey_),
         body: Form(
           key: formKey,
           child: SingleChildScrollView(
@@ -94,7 +99,7 @@ class _SignupPageState extends State<SignupPage> {
                   Stack(
                     children: [
                       SignupInfoContainer(width, height, false,
-                          emailValidator(),userEmail, "jw101902@naver.com"),
+                          emailValidator(), userEmail, "jw101902@naver.com"),
                       Positioned(
                         top: height * 0.009,
                         right: width * 0.019,
@@ -126,14 +131,14 @@ class _SignupPageState extends State<SignupPage> {
                     height: height * 0.01, //10
                   ),
                   SignupInfoText(height, width, "비밀번호"),
-                  SignupInfoContainer(width, height, true,
-                      pwdValidator(),userPwd, "passwordExample123@!"),
+                  SignupInfoContainer(width, height, true, pwdValidator(),
+                      userPwd, "passwordExample123@!"),
                   SizedBox(
                     height: height * 0.01, //10
                   ),
                   SignupInfoText(height, width, "비밀번호 확인"),
-                  SignupInfoContainer(width, height, true,
-                      pwd2Validator(),userPwd2, "passwordExample123@!"),
+                  SignupInfoContainer(width, height, true, pwd2Validator(),
+                      userPwd2, "passwordExample123@!"),
                   SizedBox(
                     height: height * 0.01, //10
                   ),
@@ -141,7 +146,7 @@ class _SignupPageState extends State<SignupPage> {
                   Stack(
                     children: [
                       SignupInfoContainer(width, height, false,
-                          nickNameValidator(),userNickname, "닉네임 예시"),
+                          nickNameValidator(), userNickname, "닉네임 예시"),
                       Positioned(
                         top: height * 0.009,
                         right: width * 0.019,
@@ -190,7 +195,8 @@ class _SignupPageState extends State<SignupPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       toggleButtonContainer(width, height, toggleButtonSex),
-                      toggleButtonContainer(width, height, toggleButtonDisabled),
+                      toggleButtonContainer(
+                          width, height, toggleButtonDisabled),
                     ],
                   ),
                   SizedBox(
@@ -202,7 +208,7 @@ class _SignupPageState extends State<SignupPage> {
                   Container(
                     width: width * 0.85,
                     height: height * 0.15,
-                    padding: const EdgeInsets.fromLTRB(15,0,15,0),
+                    padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
@@ -267,49 +273,50 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
-  Stack toggleButtonContainer(double width, double height, toggleButton toggleButton) {
+  Stack toggleButtonContainer(
+      double width, double height, toggleButton toggleButton) {
     return Stack(
-          children: [
-            Container(
-              width: width * 0.4,
-              height: height * 0.066,
-              //50
-              padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  width: 1,
-                  color: real_black,
-                ),
-              ),
-              child: toggleButton,
+      children: [
+        Container(
+          width: width * 0.4,
+          height: height * 0.066,
+          //50
+          padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              width: 1,
+              color: real_black,
             ),
-          ],
-        );
+          ),
+          child: toggleButton,
+        ),
+      ],
+    );
   }
 
   Widget smallSignupInfoText(double height, String infoText) {
     return SizedBox(
-                      height: height * 0.03,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          infoText,
-                          style: TextStyle(
-                            color: real_black,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                    );
+      height: height * 0.03,
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Text(
+          infoText,
+          style: TextStyle(
+            color: real_black,
+            fontSize: 15,
+          ),
+        ),
+      ),
+    );
   }
 
   Widget SignupInfoContainer(double width, double height, bool isobscureText,
-  Function(String?)? validator, String savedAt, String hintText) {
+      Function(String?)? validator, String savedAt, String hintText) {
     return Container(
       width: width * 0.85,
       height: height * 0.066,
-      padding: const  EdgeInsets.fromLTRB(15.0, 0, 15.0, 0),
+      padding: const EdgeInsets.fromLTRB(15.0, 0, 15.0, 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
@@ -322,43 +329,42 @@ class _SignupPageState extends State<SignupPage> {
         textAlignVertical: TextAlignVertical.center,
         validator: (value) {
           validator;
-          },
-        onSaved: (value){
-          savedAt=value!;
+        },
+        onSaved: (value) {
+          savedAt = value!;
         },
         decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: hintText,
-          hintStyle: TextStyle(
-            color: real_black_19,
-            fontSize: 15,
-          )
-        ),
+            border: InputBorder.none,
+            hintText: hintText,
+            hintStyle: TextStyle(
+              color: real_black_19,
+              fontSize: 15,
+            )),
       ),
     );
   }
 
   Widget SignupInfoText(double height, double width, String infoText) {
     return Row(
-            children: [
-              SizedBox(
-                height: height * 0.01,
-                width: width * 0.05,
+      children: [
+        SizedBox(
+          height: height * 0.01,
+          width: width * 0.05,
+        ),
+        SizedBox(
+          height: height * 0.03,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              infoText,
+              style: TextStyle(
+                color: real_black,
+                fontSize: 15,
               ),
-              SizedBox(
-                height: height * 0.03,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    infoText,
-                    style: TextStyle(
-                      color: real_black,
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          );
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

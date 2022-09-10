@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:handysub/components/appBar.dart';
+import 'package:handysub/components/sidebar.dart';
 import 'package:handysub/constants/textstyle.dart';
 
 import '../../constants/colors.dart';
+
+final GlobalKey<ScaffoldState> myPageKey_ = GlobalKey();
 
 class MyPage extends StatelessWidget {
   final String userNickName = "이용자A";
@@ -32,8 +35,10 @@ class MyPage extends StatelessWidget {
         fontFamily: "GmarketSans",
       ),
       home: Scaffold(
+        key: myPageKey_,
+        endDrawer: SidebarDrawer(),
         backgroundColor: real_white,
-        appBar: defaultAppBar(context, "마이페이지", real_white),
+        appBar: defaultAppBar(context, "마이페이지", real_white, myPageKey_),
         body: Container(
           margin: EdgeInsets.fromLTRB(
               width * 0.05, height * 0.03, width * 0.05, height * 0.03),
@@ -69,7 +74,7 @@ class MyPage extends StatelessWidget {
                   SizedBox(
                     width: 50,
                   ),
-                  disability=="비장애인"? CookieBox(): SizedBox()
+                  disability == "비장애인" ? CookieBox() : SizedBox()
                 ],
               ),
               SizedBox(
@@ -214,15 +219,15 @@ class MyPage extends StatelessWidget {
           return ChattingBox(
               index % 2 == 0
                   ? Image.asset(
-                'assets/user_image/chattingUserM_mainColor.png',
-                height: 53,
-                width: 53,
-              )
+                      'assets/user_image/chattingUserM_mainColor.png',
+                      height: 53,
+                      width: 53,
+                    )
                   : Image.asset(
-                'assets/user_image/chattingUserM_emerald.png',
-                height: 53,
-                width: 53,
-              ),
+                      'assets/user_image/chattingUserM_emerald.png',
+                      height: 53,
+                      width: 53,
+                    ),
               chatNickName[index],
               textMessage[index]);
         });

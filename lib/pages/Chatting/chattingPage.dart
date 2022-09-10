@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:handysub/components/appBar.dart';
+import 'package:handysub/components/sidebar.dart';
 import 'package:handysub/constants/colors.dart';
 import 'package:handysub/constants/textstyle.dart';
 import 'package:handysub/pages/Chatting/chatMessage.dart';
 
 class ChattingPage extends StatefulWidget {
-
   const ChattingPage({Key? key}) : super(key: key);
 
   @override
   State<ChattingPage> createState() => _ChattingPageState();
 }
 
+final GlobalKey<ScaffoldState> chattingPageKey_ = GlobalKey();
+
 class _ChattingPageState extends State<ChattingPage> {
   TextEditingController _textEditingController = TextEditingController();
   List<ChatMessage> messageList = <ChatMessage>[];
-
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +27,12 @@ class _ChattingPageState extends State<ChattingPage> {
         fontFamily: 'GmarketSans',
       ),
       home: Scaffold(
-        appBar: defaultAppBar(context, "채팅", real_white),
+        key: chattingPageKey_,
+        appBar: defaultAppBar(context, "채팅", real_white, chattingPageKey_),
+        endDrawer: SidebarDrawer(),
         body: Container(
-          margin: EdgeInsets.fromLTRB(width * 0.05, height * 0.03,
-              width * 0.05, height * 0.03),
+          margin: EdgeInsets.fromLTRB(
+              width * 0.05, height * 0.03, width * 0.05, height * 0.03),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -38,7 +41,7 @@ class _ChattingPageState extends State<ChattingPage> {
                 // fit: StackFit.expand,
                 children: [
                   Container(
-                    padding: const EdgeInsets.fromLTRB(15,0,30,0),
+                    padding: const EdgeInsets.fromLTRB(15, 0, 30, 0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
@@ -50,7 +53,8 @@ class _ChattingPageState extends State<ChattingPage> {
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
                       controller: _textEditingController,
-                      decoration: InputDecoration(hintText: "메세지를 입력해주세요",
+                      decoration: InputDecoration(
+                        hintText: "메세지를 입력해주세요",
                         border: InputBorder.none,
                       ),
                       onSubmitted: textSubmit,
@@ -59,8 +63,13 @@ class _ChattingPageState extends State<ChattingPage> {
                   Positioned(
                     right: 0,
                     child: IconButton(
-                        onPressed: (){textSubmit(_textEditingController.text);},
-                        icon: Icon(Icons.send, color: main_color,)),
+                        onPressed: () {
+                          textSubmit(_textEditingController.text);
+                        },
+                        icon: Icon(
+                          Icons.send,
+                          color: main_color,
+                        )),
                   )
                 ],
               ),
@@ -71,30 +80,23 @@ class _ChattingPageState extends State<ChattingPage> {
     );
   }
 
-  Widget chattingBuilder(){
+  Widget chattingBuilder() {
     return ListView.builder(
         shrinkWrap: true,
         reverse: true,
         padding: const EdgeInsets.all(8),
         itemCount: messageList.length,
-        itemBuilder: (BuildContext context, int index){
+        itemBuilder: (BuildContext context, int index) {
           return messageList[index];
         });
   }
 
-  void textSubmit(String text){
+  void textSubmit(String text) {
     _textEditingController.clear();
-    final DateTime now=DateTime.now();
+    final DateTime now = DateTime.now();
     ChatMessage newMessage = ChatMessage(text, 0, now);
     setState(() {
       messageList.insert(0, newMessage);
-
     });
-
   }
-
-
 }
-
-
-
