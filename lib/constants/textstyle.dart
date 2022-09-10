@@ -26,7 +26,7 @@ TextStyle defaultLightTextStyle(double size_) {
       fontSize: size_);
 }
 
-TextStyle default65BoldTextStyle(double size_) {
+TextStyle defaultBoldTextStyle_65(double size_) {
   return TextStyle(
       color: real_black_65,
       fontFamily: 'GmarketSans',

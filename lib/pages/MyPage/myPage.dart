@@ -180,14 +180,14 @@ class MyPage extends StatelessWidget {
                   children: [
                     Text(
                       station1,
-                      style: default65BoldTextStyle(15.0),
+                      style: defaultBoldTextStyle_65(15.0),
                     ),
                     Icon(
                       Icons.east,
                       color: real_black_65,
                       size: 15,
                     ),
-                    Text(station2, style: default65BoldTextStyle(15.0)),
+                    Text(station2, style: defaultBoldTextStyle_65(15.0)),
                   ],
                 ),
                 Text(
