@@ -15,33 +15,30 @@ class SidebarDrawer extends StatelessWidget {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(color: main_color),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 70,
-                      child: Image.asset(
-                          "assets/user_image/chattingUserM_mainColor.png"),
-                    ),
-                    SizedBox(width: 30),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "userName",
-                          style: defaultBoldTextStyle(15),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          "장애여부 : 비장애인",
-                          style: defaultTextStyle(14),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 70,
+                    child: Image.asset(
+                        "assets/user_image/chattingUserM_mainColor.png"),
+                  ),
+                  SizedBox(width: 30),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "userName",
+                        style: defaultBoldTextStyle(15),
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        "장애여부 : 비장애인",
+                        style: defaultTextStyle(14),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
             drawerListTile("매칭 리스트", () {}),
