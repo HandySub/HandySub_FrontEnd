@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:handysub/Providers/UserProvider.dart';
 import 'package:handysub/components/frame.dart';
 import 'package:handysub/components/sidebar.dart';
 import 'package:handysub/constants/colors.dart';
@@ -12,6 +13,8 @@ import 'package:handysub/pages/Matching/matching_pick_abled.dart';
 import 'package:handysub/pages/Matching/matching_review_disabled.dart';
 import 'package:handysub/pages/Matching/matching_waiting_disabled.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:handysub/Providers/UserProvider.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 import 'pages/Chatting/chattingPage.dart';
@@ -19,7 +22,16 @@ import 'pages/Chatting/chattingPage.dart';
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: main_color));
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UserProvider(),
+        )
+      ],
+      child: MyApp(),
+    ),
+  );
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -69,7 +81,7 @@ class MyApp extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MatchingPickAbled(),
+                        builder: (context) => LoginPage(),
                       ),
                     );
                   },
