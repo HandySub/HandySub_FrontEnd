@@ -8,6 +8,10 @@ class UserProvider with ChangeNotifier {
     return _user;
   }
 
+  getUserEmail() {
+    return _user.email;
+  }
+
   setUserData(User user) {
     _user.email = user.email;
     _user.password = user.password;

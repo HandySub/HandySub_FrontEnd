@@ -6,6 +6,7 @@ import 'package:handysub/VIewModels/signUpViewModel.dart';
 import 'package:handysub/components/buttons.dart';
 import 'package:handysub/components/sidebar.dart';
 import 'package:handysub/constants/colors.dart';
+import 'package:provider/provider.dart';
 import '../../components/appBar.dart';
 
 class SignupPage extends StatefulWidget {
@@ -30,6 +31,9 @@ class _SignupPageState extends State<SignupPage> {
               only when 장애인 is selected */
   bool handicapped = true;
   bool sex = true;
+
+  late UserProvider _userProvider;
+  late SignUpViewModel _signUpViewModel;
 
   toggleButton toggleButtonSex = toggleButton(text1: "남성", text2: "여성");
   toggleButton toggleButtonDisabled = toggleButton(text1: "장애인", text2: "비장애인");
@@ -78,6 +82,9 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
+    _userProvider = Provider.of<UserProvider>(context, listen: false);
+    _signUpViewModel = SignUpViewModel();
+
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return MaterialApp(
@@ -287,8 +294,12 @@ class _SignupPageState extends State<SignupPage> {
       userDisabledInfo,
       3.0,
     );
-    UserProvider().setUserData(user);
-    SignUpViewModel().signUp(user);
+    print(user.email);
+    print(userEmail);
+    // context.read<UserProvider>().setUserData(user);
+    // print(Provider.of<UserProvider>(context).getUserEmail());
+    // _userProvider.setUserData(user);
+    _signUpViewModel.signUp(user);
   }
 
   Widget sex_button(double width, double height) {
@@ -404,7 +415,7 @@ class _SignupPageState extends State<SignupPage> {
           color: real_black,
         ),
       ),
-      child: TextFormField(
+      child: TextField(
         // obscureText: isobscureText,
         // textAlignVertical: TextAlignVertical.center,
         // validator: (value) {
@@ -414,6 +425,7 @@ class _SignupPageState extends State<SignupPage> {
           setState(() {
             savedAt = value;
           });
+          print(savedAt);
         },
         decoration: InputDecoration(
             border: InputBorder.none,

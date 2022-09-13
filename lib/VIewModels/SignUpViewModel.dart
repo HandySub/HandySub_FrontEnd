@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:handysub/Models/UserModel.dart';
 import 'package:handysub/Providers/UserProvider.dart';
 
-class SignUpViewModel with ChangeNotifier {
+class SignUpViewModel {
   signUp(User user) {
     FirebaseFirestore.instance
         .collection("User")
